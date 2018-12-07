@@ -1,0 +1,22 @@
+<!--
+  Generated template for the MainPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="mainpage"></ion-icon>
+    </button>
+    <ion-title>MainPage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-tabs #myTabs>
+  <ion-tab tabIcon="qrcode" tabTitle="QRCode" [root]="tab1"></ion-tab>
+  <ion-tab tabIcon="rewards" tabTitle="Rewards" [root]="tab2"></ion-tab>
+  <ion-tab tabIcon="information" tabTitle="Information" [root]="tab3"></ion-tab>
+</ion-tabs>
