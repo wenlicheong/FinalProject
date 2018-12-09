@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner';
+
 /**
  * Generated class for the RewardsPage page.
  *
@@ -20,9 +21,10 @@ export class RewardsPage {
   options: BarcodeScannerOptions;
   results:{};       /*barcode 1*/
   scanData : {};    /*barcode 2*/
+
   constructor(private barcode: BarcodeScanner, public navCtrl: NavController, public navParams: NavParams) {
-   
   }
+
   /*barcode 1*/
   async scanBarcode(){
     this.options={

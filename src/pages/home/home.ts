@@ -13,6 +13,7 @@ import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
   @ViewChild(Nav) nav: Nav;
   pages: Array<{title:string, component: string,openTab? :any}>;
@@ -22,9 +23,11 @@ export class HomePage {
     this.pages=[
       { title: 'MainPage',component:'MainPage'},
     ];
-  }
 
+  }
+  
   openPage(page){
     this.nav.setRoot(page.component,{openTab:page.openTab});
-  }
+  }  
+  
 }

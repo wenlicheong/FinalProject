@@ -11,9 +11,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 /*references of libraries that have to be imported before it is used*/
 
 import { MyApp } from './app.component';
-
 import {FIREBASE_CONFIG} from "./app.firebase.config";
-
 
 
 @NgModule({

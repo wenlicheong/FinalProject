@@ -15,10 +15,6 @@
 
 <ion-content padding>
   <div>
-    <ion-input style="background-color: gray" type="text" [(ngModel)]="encodText"></ion-input>
-      <button ion-button block (click)="encode()">Encode</button>
-  </div>
-  <div>
         <button ion-button block (click)="scan()">Scan</button>
         <div *ngIf="scannedData.text">
           <label>Your barcode is</label>
@@ -33,7 +29,6 @@
       </div>    
   </div>     
        
-
   <ion-list>
     <ion-item *ngFor="let item of arrData">
       <span>{{item.text}}</span>
