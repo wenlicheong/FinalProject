@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Point } from "../../models/points";
+import {AngularFireList} from 'angularfire2/database/interfaces';
+import {Observable} from 'rxjs/Observable';
+import 
 /**
  * Generated class for the QrcodePage page.
  *
@@ -20,10 +23,19 @@ export class QrcodePage {
   options: BarcodeScannerOptions;
   scannedData:any={};
   arrData=[];
-  scannedData1:any={};
   points = {} as Point;
   numData;
   totalData;
+  
+  
+  ref: AngularFireList<any>;
+  transaction = {
+    points:false
+  }
+
+  @ViewChild('valueBarsCanvas')valueBarCanvas;
+  valueBarsChart: any;
+  chartData= null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public scanner:BarcodeScanner, private fdb: AngularFireDatabase,private afAuth: AngularFireAuth) {
    /* this.fdb.list("/myItems/").valueChanges().subscribe(_data=>{
@@ -72,13 +84,35 @@ export class QrcodePage {
 
     this.options={
       prompt:'Scan your barcode'
-    };
+    }; 
 
     this.scanner.scan(this.options).then((data) => {
-      this.scannedData1 = data;        //takes data and puts it into scanned data
-      this.fdb.list("/testing/").update(this.scannedData1,{text:this.scannedData1})  //pushes scanned data into database
-    }, 
-    (err) => {
+      this.scannedData = data;        //takes data and puts it into scanned data
+     
+        this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+          this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
+          this.ref.push(this.transaction).then(()=>{
+            this.transaction={
+              points: this.scannedData.text
+            };
+          });  //pushing scanned data into specific user
+           /* 
+            this.fdb.list('points/'+ auth.uid).valueChanges().subscribe(_data=>{
+              this.arrData=_data;                           //subscribe passes the value and displays it in the console
+              
+            
+
+              this.totalData=0;
+              for (let index = 1; index < this.arrData.length; index++) {               
+                this.totalData += parseInt(this.arrData[index],10);  
+              }
+             
+             });
+
+            */
+
+        })
+    }, (err) => {
       console.log('Error:',err);
     })
 

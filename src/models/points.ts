@@ -1,3 +1,3 @@
 export interface Point{
-    points: string;
+    points: number;
 }
