@@ -20,6 +20,8 @@
           <label>Your barcode is</label>
           <br>
           <span>{{scannedData.text}}</span>
+          <span>{{numData}}</span>
+          <span>{{totalData}}</span>
         </div>
   </div>
 
@@ -31,7 +33,8 @@
        
   <ion-list>
     <ion-item *ngFor="let item of arrData">
-      <span>{{item.text}}</span>
+      <span>{{item}}</span>
     </ion-item>
+  
   </ion-list>
 </ion-content>
