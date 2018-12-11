@@ -6,7 +6,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Point } from "../../models/points";
 import {AngularFireList} from 'angularfire2/database/interfaces';
 import {Observable} from 'rxjs/Observable';
-import 
+import {Chart} from 'chart.js';
+
 /**
  * Generated class for the QrcodePage page.
  *
@@ -25,15 +26,15 @@ export class QrcodePage {
   arrData=[];
   points = {} as Point;
   numData;
-  totalData;
-  
+  totalData: any={};
+  capData;
   
   ref: AngularFireList<any>;
   transaction = {
-    points:false
+    points:0
   }
 
-  @ViewChild('valueBarsCanvas')valueBarCanvas;
+  @ViewChild('valueBarsCanvas')valueBarsCanvas;
   valueBarsChart: any;
   chartData= null;
 
@@ -121,6 +122,76 @@ export class QrcodePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QrcodePage');
+
+    this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+      this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
+        this.ref.valueChanges().subscribe(result=>{
+        this.arrData=result;                           //subscribe passes the value and displays it in the console
+        console.log(this.arrData);
+        this.totalData=0;
+              for (let index = 0; index < this.arrData.length; index++) {               //add values up
+                this.totalData += parseInt(this.arrData[index].points,10);  
+              }
+        this.createChart(this.totalData);
+       });
+
+       
+    })
+  
+
+   
+
   }
+/*
+  createCharts(data){
+    this.chartData = data;
+
+    let chartData = this.getValues();
+
+    console.log('my array: ', chartData);
+
+    this.valueBarsChart= new Chart(this.valueBarCanvas.nativeElement, {
+     type: 'doughnut', 
+     data:{
+       labels: ["Points", "Pointstogo"],
+       data: [50,50],
+       datasets:
+
+     }
+    });
+  }
+*/
+
+  createChart(data){
+  this.chartData=data;
+  this.capData= 1000;
+  this.valueBarsChart = new Chart(this.valueBarsCanvas.nativeElement, {
+    type: 'doughnut',
+    data: {
+        labels: ["Current", "Bronze"],
+        datasets: [{
+            label: 'Recycling Journey',
+            data: [this.chartData, this.capData-this.chartData],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)'               
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)'              
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            
+        }
+    }
+});
 
 }
+
+}
+
+
