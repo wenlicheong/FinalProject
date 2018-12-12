@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from "angularfire2/auth";
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 /*references of libraries that have to be imported before it is used*/
 
@@ -22,6 +22,7 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
   imports: [      /*import all the libraries refeerred above*/
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
     AngularFireDatabaseModule
