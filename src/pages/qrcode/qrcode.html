@@ -38,5 +38,21 @@
   </ion-list>
 -->
   <canvas #valueBarsCanvas ></canvas>
-
+  <ion-card>
+    <ion-row>
+      <ion-col col-6>
+        Unlock Gold Member
+      </ion-col>
+      <ion-col col-6> 
+        2000 of 3000
+      </ion-col>
+    </ion-row>
+    <ion-card-header>
+      Green
+    </ion-card-header>
+    <ion-item>
+      <pogress-bar [pogress]="this.loadProgress"></pogress-bar>
+    </ion-item>
+</ion-card>
+    <circle-bar [value]="50"></circle-bar>
 </ion-content>

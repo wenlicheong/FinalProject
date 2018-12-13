@@ -15,9 +15,10 @@ import { MyApp } from './app.component';
 import {FIREBASE_CONFIG} from "./app.firebase.config";
 
 
+
 @NgModule({
   declarations: [
-    MyApp   /*parent component*/
+    MyApp,   /*parent component*/
     
   ],
   imports: [      /*import all the libraries refeerred above*/
@@ -26,7 +27,8 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     AngularFireModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
-    AngularFireDatabaseModule, 
+    AngularFireDatabaseModule
+    
 
   ],
   bootstrap: [IonicApp],

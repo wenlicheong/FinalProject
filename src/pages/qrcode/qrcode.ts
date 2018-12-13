@@ -28,7 +28,8 @@ export class QrcodePage {
   numData;
   totalData: any={};
   capData;
-  
+  loadProgress=50;
+
   ref: AngularFireList<any>;
   transaction = {
     points:0
@@ -191,6 +192,8 @@ export class QrcodePage {
 });
 
 }
+
+
 
 }
 
