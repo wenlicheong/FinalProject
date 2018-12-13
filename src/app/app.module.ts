@@ -8,6 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+
 /*references of libraries that have to be imported before it is used*/
 
 import { MyApp } from './app.component';
@@ -25,7 +26,8 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     AngularFireModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule, 
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
