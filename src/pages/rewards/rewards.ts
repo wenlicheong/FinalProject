@@ -1,8 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import {BarcodeScanner} from '@ionic-native/barcode-scanner';
-import {Observable} from 'rxjs/Observable';
-import {AngularFireList} from 'angularfire2/database/interfaces';
+import { Component} from '@angular/core';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireDatabase} from 'angularfire2/database';
 
 @IonicPage()
@@ -12,12 +9,17 @@ import {AngularFireDatabase} from 'angularfire2/database';
 })
 export class RewardsPage {
 
-  constructor(private fdb: AngularFireDatabase, private barcode: BarcodeScanner, public navCtrl: NavController, public navParams: NavParams, private toast: ToastController) {
+ awardRef: any={};
+
+  constructor(private fdb: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
+    
+     this.fdb.object('Bronze/').valueChanges().subscribe(_data=>{
+      this.awardRef=_data; 
+    })
   }
 
   ionViewDidLoad(){
    
   }
- 
 
 }
