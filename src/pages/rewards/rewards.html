@@ -9,29 +9,25 @@
 
 <ion-content padding>
 
-  <ion-card id="carddesign">
+  <ion-card id="carddesign" *ngIf= "this.value==1" >
     <ion-grid>
       <ion-row>
         <ion-col col-sm-8>
             <ion-card-content>
               <ion-card-title>
-                
-                  <span>{{awardRef.rewards}}</span>
-              
+                  <span>{{bronzeRef.rewards}}</span>
               </ion-card-title>
               <p>
-                The most popular industrial group ever, and largely
-                responsible for bringing the music to a mass audience.
+                {{bronzeRef.description}}
               </p>
             </ion-card-content>
         </ion-col>
         <ion-col col-sm-4>
-            <img id="pic" src="../assets/imgs/coffee.jpg"/>
-            
+            <img id="pic" src="{{bronzeRef.photo}}"/>  
         </ion-col>
       </ion-row>
       <ion-row>
-          <button ion-button full >Full Button</button>
+          <button ion-button full (click)= "claimcoupon()">Claim Coupon</button>
       </ion-row>
     </ion-grid>
   </ion-card>
