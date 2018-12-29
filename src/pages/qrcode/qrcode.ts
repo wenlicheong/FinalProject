@@ -184,8 +184,12 @@ export class QrcodePage {
   }
 
   createChart(data){
+   if (data>=100) {
+     this.createsilverChart(data);
+   }
+   else{
   this.chartData=data;
-  this.capData= 1000;
+  this.capData= 100;
   this.valueBarsChart = new Chart(this.valueBarsCanvas.nativeElement, {
     type: 'doughnut',
     data: {
@@ -212,6 +216,73 @@ export class QrcodePage {
   });
 
   }
+}
+
+  createsilverChart(data){
+    if (data>=200){
+      this.creategoldChart(data);
+    }
+    else{
+    this.chartData=data;
+    this.capData= 100;
+    this.valueBarsChart = new Chart(this.valueBarsCanvas.nativeElement, {
+      type: 'doughnut',
+      data: {
+          labels: ["Current", "Silver"],
+          datasets: [{
+              label: 'Recycling Journey',
+              data: [this.chartData, this.capData-this.chartData],
+              backgroundColor: [
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)'               
+              ],
+              borderColor: [
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)'              
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              
+          }
+      }
+    });
+  
+    }
+  }
+
+  creategoldChart(data){
+    this.chartData=data;
+    this.capData= 100;
+    this.valueBarsChart = new Chart(this.valueBarsCanvas.nativeElement, {
+      type: 'doughnut',
+      data: {
+          labels: ["Current", "Gold"],
+          datasets: [{
+              label: 'Recycling Journey',
+              data: [this.chartData, this.capData-this.chartData],
+              backgroundColor: [
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)'               
+              ],
+              borderColor: [
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)'              
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              
+          }
+      }
+    });
+  
+    }
+  
 
 
 

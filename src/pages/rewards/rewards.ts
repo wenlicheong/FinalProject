@@ -14,6 +14,9 @@ export class RewardsPage {
  silverRef: any={};
  goldRef: any={};
  value;
+ bronze;
+ silver;
+ gold;
 
   constructor(private fdb: AngularFireDatabase, private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
     //getting voucher details from database
@@ -26,6 +29,10 @@ export class RewardsPage {
     this.fdb.object('Gold/').valueChanges().subscribe(_data=>{
       this.goldRef=_data; 
     })
+
+    this.getBronzeCoupon();
+    this.getGoldCoupon();
+    this.getSilverCoupon();
   }
 
   ionViewDidLoad(){
@@ -36,7 +43,7 @@ export class RewardsPage {
   getBronzeCoupon(){     
     this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
       this.fdb.object('UserCoupons/'+ 'Bronze/' + auth.uid).valueChanges().subscribe(data=>{
-        this.value=data
+        this.bronze=data
       });      
     })
   }
@@ -44,11 +51,7 @@ export class RewardsPage {
   getSilverCoupon(){     
     this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
       this.fdb.object('UserCoupons/'+ 'Silver/' + auth.uid).valueChanges().subscribe(data=>{
-        this.value=data;
-        if (this.value==1){
-          return true;
-        }
-        else return false;
+        this.silver=data
       });      
     })
   }
@@ -56,21 +59,31 @@ export class RewardsPage {
   getGoldCoupon(){     
     this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
       this.fdb.object('UserCoupons/'+ 'Gold/' + auth.uid).valueChanges().subscribe(data=>{
-        this.value=data;
-        if (this.value==1){
-          return true;
-        }
-        else return false;
+        this.gold=data
       });      
     })
   }
 
   //when user has claimed coupon
-  claimcoupon(){
+  claimbronzecoupon(){
+    this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+        this.fdb.object('UserCoupons/' + 'Bronze/' + auth.uid).set(0);
+      });    
+  }
+
+  claimsilvercoupon(){
+    this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+        this.fdb.object('UserCoupons/' + 'Silver/' + auth.uid).set(0);
+      });    
+  }
+
+  claimgoldcoupon(){
     this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
         this.fdb.object('UserCoupons/' + 'Gold/' + auth.uid).set(0);
       });    
   }
+
+
 /*
   displaycoupon(){
     this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
