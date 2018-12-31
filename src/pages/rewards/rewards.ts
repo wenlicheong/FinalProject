@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireDatabase} from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { CouponPage } from '../coupon/coupon';
 
 @IonicPage()
 @Component({
@@ -9,7 +10,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'rewards.html',
 })
 export class RewardsPage {
- 
+
  bronzeRef: any={};
  silverRef: any={};
  goldRef: any={};
@@ -64,25 +65,10 @@ export class RewardsPage {
     })
   }
 
-  //when user has claimed coupon
-  claimbronzecoupon(){
-    this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-        this.fdb.object('UserCoupons/' + 'Bronze/' + auth.uid).set(0);
-      });    
-  }
+  navigatetocouponpage(){
 
-  claimsilvercoupon(){
-    this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-        this.fdb.object('UserCoupons/' + 'Silver/' + auth.uid).set(0);
-      });    
+    this.navCtrl.push(CouponPage);
   }
-
-  claimgoldcoupon(){
-    this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-        this.fdb.object('UserCoupons/' + 'Gold/' + auth.uid).set(0);
-      });    
-  }
-
 
 /*
   displaycoupon(){

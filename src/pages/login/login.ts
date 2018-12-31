@@ -30,7 +30,7 @@ export class LoginPage {
               message:'Welcome',
               duration:3000
             }).present();
-            this.navCtrl.setRoot('HomePage');
+            this.navCtrl.setRoot('MainPage');
           }
         });
      }

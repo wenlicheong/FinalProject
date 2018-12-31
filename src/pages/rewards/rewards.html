@@ -10,72 +10,43 @@
 <ion-content padding>
 
   <ion-card id="carddesign" *ngIf= "this.bronze==1" >
-    <ion-grid>
-      <ion-row>
-        <ion-col col-sm-8>
-            <ion-card-content>
-              <ion-card-title>
-                  <span>{{bronzeRef.rewards}}</span>
-              </ion-card-title>
-              <p>
-                {{bronzeRef.description}}
-              </p>
-            </ion-card-content>
-        </ion-col>
-        <ion-col col-sm-4>
-            <img id="pic" src="{{bronzeRef.photo}}"/>  
-        </ion-col>
-      </ion-row>
-      <ion-row>
-          <button ion-button full (click)= "claimbronzecoupon()">Claim Coupon</button>
-      </ion-row>
-    </ion-grid>
+      <img id="pic" src="{{bronzeRef.photo}}"/>  
+        <ion-card-content>
+          <ion-card-title>
+               <span>{{bronzeRef.rewards}}</span>
+          </ion-card-title>
+           <p>
+             {{bronzeRef.description}}
+          </p>
+        </ion-card-content>
+       <button ion-button clear (click)= "navigatetocouponpage()">Claim Coupon</button>   
   </ion-card>
 
   <ion-card id="carddesign" *ngIf= "this.silver==1" >
-    <ion-grid>
-      <ion-row>
-        <ion-col col-sm-8>
-            <ion-card-content>
-              <ion-card-title>
-                  <span>{{silverRef.rewards}}</span>
-              </ion-card-title>
-              <p>
-                {{silverRef.description}}
-              </p>
-            </ion-card-content>
-        </ion-col>
-        <ion-col col-sm-4>
-            <img id="pic" src="{{silverRef.photo}}"/>  
-        </ion-col>
-      </ion-row>
-      <ion-row>
-          <button ion-button full (click)= "claimsilvercoupon()">Claim Coupon</button>
-      </ion-row>
-    </ion-grid>
+      <img id="pic" src="{{silverRef.photo}}"/>  
+        <ion-card-content>
+          <ion-card-title>
+               <span>{{silverRef.rewards}}</span>
+          </ion-card-title>
+           <p>
+             {{silverRef.description}}
+          </p>
+        </ion-card-content>
+       <button ion-button clear (click)=  "navigatetocouponpage()" >Claim Coupon</button>   
   </ion-card>
 
   <ion-card id="carddesign" *ngIf= "this.gold==1" >
-    <ion-grid>
-      <ion-row>
-        <ion-col col-sm-8>
-            <ion-card-content>
-              <ion-card-title>
-                  <span>{{goldRef.rewards}}</span>
-              </ion-card-title>
-              <p>
-                {{goldRef.description}}
-              </p>
-            </ion-card-content>
-        </ion-col>
-        <ion-col col-sm-4>
-            <img id="pic" src="{{goldRef.photo}}"/>  
-        </ion-col>
-      </ion-row>
-      <ion-row>
-          <button ion-button full (click)= "claimgoldcoupon()">Claim Coupon</button>
-      </ion-row>
-    </ion-grid>
+    
+      <img id="pic" src="{{goldRef.photo}}"/>  
+        <ion-card-content>
+          <ion-card-title>
+               <span>{{goldRef.rewards}}</span>
+          </ion-card-title>
+           <p>
+             {{goldRef.description}}
+          </p>
+        </ion-card-content>
+       <button ion-button clear (click)=  "navigatetocouponpage()" >Claim Coupon</button>   
   </ion-card>
  
 </ion-content>

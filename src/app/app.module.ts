@@ -14,13 +14,14 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { MyApp } from './app.component';
 import {FIREBASE_CONFIG} from "./app.firebase.config";
+import { CouponPage } from '../pages/coupon/coupon';
 
 
 
 @NgModule({
   declarations: [
     MyApp,   /*parent component*/
-    
+    CouponPage
   ],
   imports: [      /*import all the libraries refeerred above*/
     BrowserModule,
@@ -34,8 +35,8 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
-   
+    MyApp,
+    CouponPage
   ],
   providers: [
     StatusBar,
