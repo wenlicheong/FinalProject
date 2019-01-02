@@ -15,10 +15,11 @@
 
 <ion-content padding>
     <h1>Earn your recycling points</h1>
+    <ion-card>
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-card>
+         
             <img class="hi" src="../assets/imgs/utensils.png"/>
             <ion-card-content>
               <ion-card-title>
@@ -28,10 +29,10 @@
                10 points
               </p>
             </ion-card-content>
-          </ion-card>
+         
         </ion-col>
         <ion-col>
-          <ion-card>
+         
             <img class="hi" src="../assets/imgs/plasticbag.png"/>
             <ion-card-content>
               <ion-card-title>
@@ -41,12 +42,12 @@
                 10 points
               </p>
             </ion-card-content>
-          </ion-card>
+         
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-card>
+          
             <img class="hi" src="../assets/imgs/cup.png"/>
             <ion-card-content>
               <ion-card-title>
@@ -56,10 +57,10 @@
                10 poins
               </p>
             </ion-card-content>
-          </ion-card>
+          
         </ion-col>
         <ion-col>
-          <ion-card>
+          
             <img class="hi" src="../assets/imgs/container.png"/>
             <ion-card-content>
               <ion-card-title>
@@ -69,8 +70,10 @@
                 10 points
               </p>
             </ion-card-content>
-          </ion-card>
+          
         </ion-col>
       </ion-row>
     </ion-grid>
+  </ion-card>
+    <button ion-button (click)="closeinformationpage()">Got it</button>
 </ion-content>

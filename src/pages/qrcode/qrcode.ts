@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -8,6 +8,8 @@ import {AngularFireList} from 'angularfire2/database/interfaces';
 import {Chart} from 'chart.js';
 import { TotalPoints } from '../../models/totalpoints.interface';
 import { UserCoupons } from '../../models/usercoupons';
+import { InformationPage } from '../information/information';
+
 
 /**
  * Generated class for the QrcodePage page.
@@ -46,7 +48,7 @@ export class QrcodePage {
   valueBarsChart: any;
   chartData= null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public scanner:BarcodeScanner, private fdb: AngularFireDatabase,private afAuth: AngularFireAuth) {
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public scanner:BarcodeScanner, private fdb: AngularFireDatabase,private afAuth: AngularFireAuth) {
      
   this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
     this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
@@ -159,6 +161,9 @@ export class QrcodePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QrcodePage');
+
+
+   
     //place this here so that the graph will load first
     /*
     this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
@@ -281,6 +286,11 @@ export class QrcodePage {
       }
     });
   
+    }
+
+
+    navigatetoinformationpage(){
+      this.modalCtrl.create(InformationPage).present();
     }
   
 

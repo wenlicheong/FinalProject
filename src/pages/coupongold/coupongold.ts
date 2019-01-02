@@ -4,7 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 /**
- * Generated class for the CouponPage page.
+ * Generated class for the CoupongoldPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,36 +12,29 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
-  selector: 'page-coupon',
-  templateUrl: 'coupon.html',
+  selector: 'page-coupongold',
+  templateUrl: 'coupongold.html',
 })
-export class CouponPage {
+export class CoupongoldPage {
 
-  bronzeRef: any={};
-  silverRef: any={};
   goldRef: any={};
 
   constructor(private fdb: AngularFireDatabase, private afAuth: AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
- 
-    this.fdb.object('Bronze/').valueChanges().subscribe(_data=>{
-      this.bronzeRef=_data; 
-    }) 
+    
+    this.fdb.object('Gold/').valueChanges().subscribe(_data=>{
+      this.goldRef=_data; 
+    })
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CouponPage');
-   
+    console.log('ionViewDidLoad CoupongoldPage');
   }
 
-   //when user has claimed coupon
-   claimbronzecoupon(){
+  claimgoldcoupon(){
     this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-        this.fdb.object('UserCoupons/' + 'Bronze/' + auth.uid).set(0);
+        this.fdb.object('UserCoupons/' + 'Gold/' + auth.uid).set(0);
       });    
   }
-
-  
-
- 
 
 }

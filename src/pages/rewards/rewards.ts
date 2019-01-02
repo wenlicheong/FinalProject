@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireDatabase} from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { CouponPage } from '../coupon/coupon';
+import { CouponsilverPage } from '../couponsilver/couponsilver';
+import { CoupongoldPage } from '../coupongold/coupongold';
 
 @IonicPage()
 @Component({
@@ -65,9 +67,16 @@ export class RewardsPage {
     })
   }
 
-  navigatetocouponpage(){
-
+  couponbronzepage(){
     this.navCtrl.push(CouponPage);
+  }
+
+  couponsilverpage(){
+    this.navCtrl.push(CouponsilverPage);
+  }
+
+  coupongoldpage(){
+    this.navCtrl.push(CoupongoldPage);
   }
 
 /*

@@ -17,13 +17,10 @@ import { IonicPage, NavController, NavParams, Tabs } from 'ionic-angular';
 export class MainPage {
   tab1 = 'QrcodePage';
   tab2 = 'RewardsPage';
-  tab3 = 'InformationPage';
-
+  tab3 = 'ProfilePage';
    
   @ViewChild('myTabs') tabRef: Tabs;
-
- 
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
