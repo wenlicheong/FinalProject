@@ -1,9 +1,22 @@
 page-information {
+
+    ion-content{
+        background-color: green;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    #carddesign {
+        border-radius: 15px;
+    }
+
     .hi{
 
-        width:100px;
+        width:500px;
         margin:auto;
-        padding:20px;
+        padding:1px;
         
     }
 

@@ -9,6 +9,7 @@ import {Chart} from 'chart.js';
 import { TotalPoints } from '../../models/totalpoints.interface';
 import { UserCoupons } from '../../models/usercoupons';
 import { InformationPage } from '../information/information';
+import { TransitiveCompileNgModuleMetadata } from '@angular/compiler';
 
 
 /**
@@ -34,7 +35,8 @@ export class QrcodePage {
   loadProgress=50;
   value;
   ref: AngularFireList<any>;
-  
+  goldtier=300;
+  silvertier=300;
  
 
   transaction = {
@@ -203,20 +205,23 @@ export class QrcodePage {
             label: 'Recycling Journey',
             data: [this.chartData, this.capData-this.chartData],
             backgroundColor: [
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)'               
+                'rgba(60, 179, 113)',
+                'rgba(143, 188, 143)'               
             ],
-            borderColor: [
+        /*  borderColor: [
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)'              
-            ],
+            ], */
             borderWidth: 1
         }]
     },
     options: {
         scales: {
             
-        }
+        }, 
+        cutoutPercentage:70
+
+        
     }
   });
 
@@ -238,20 +243,22 @@ export class QrcodePage {
               label: 'Recycling Journey',
               data: [this.chartData, this.capData-this.chartData],
               backgroundColor: [
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)'               
+                'rgba(60, 179, 113)',
+                'rgba(143, 188, 143)'                 
               ],
-              borderColor: [
+           /*   borderColor: [
                   'rgba(54, 162, 235, 1)',
                   'rgba(255, 206, 86, 1)'              
-              ],
+              ],*/
               borderWidth: 1
           }]
       },
       options: {
           scales: {
               
-          }
+          }, 
+          cutoutPercentage:70
+  
       }
     });
   
@@ -269,32 +276,52 @@ export class QrcodePage {
               label: 'Recycling Journey',
               data: [this.chartData, this.capData-this.chartData],
               backgroundColor: [
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)'               
+                'rgba(60, 179, 113)',
+                'rgba(143, 188, 143)'               
               ],
-              borderColor: [
+          /*    borderColor: [
                   'rgba(54, 162, 235, 1)',
                   'rgba(255, 206, 86, 1)'              
-              ],
+              ], */
               borderWidth: 1
           }]
       },
       options: {
           scales: {
               
-          }
+          }, 
+          cutoutPercentage:70
+  
       }
     });
   
     }
 
 
+    tosilver(){
+      this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+        this.fdb.object('TotalPoints/'+ auth.uid).valueChanges().subscribe(data=>{
+          this.value=data;
+          if (this.value>=200) {
+            this.togold();
+          }
+        });  
+      })    
+      return this.silvertier - this.value;
+    }
+
+    togold(){
+      this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+        this.fdb.object('TotalPoints/'+ auth.uid).valueChanges().subscribe(data=>{
+          this.value=data;
+        });  
+      })    
+      return this.goldtier - this.value;
+    }
+
     navigatetoinformationpage(){
       this.modalCtrl.create(InformationPage).present();
     }
-  
-
-
 
 }
 

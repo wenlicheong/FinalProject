@@ -18,7 +18,8 @@ export class MainPage {
   tab1 = 'QrcodePage';
   tab2 = 'RewardsPage';
   tab3 = 'ProfilePage';
-   
+  tab4= 'ScanPage';
+
   @ViewChild('myTabs') tabRef: Tabs;
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {

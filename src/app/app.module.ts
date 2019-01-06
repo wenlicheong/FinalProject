@@ -9,7 +9,6 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-
 /*references of libraries that have to be imported before it is used*/
 
 import { MyApp } from './app.component';
