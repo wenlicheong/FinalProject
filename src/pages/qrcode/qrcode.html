@@ -4,61 +4,39 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
+<ion-header no-border>
   <ion-navbar>
-    <ion-title>qrcode</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="navigatetoinformationpage()">
-        <ion-icon name="information-circle" ></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-
+    <ion-title></ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="navigatetoinformationpage()">
+          <ion-icon name="information-circle" ></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-  <div>
-        <button ion-button block (click)="scan()">Scan</button>
-        <div *ngIf="scannedData.text">
-          <label>Your barcode is</label>
-          <br>
-          <span>{{scannedData.text}}</span>
-          <span>{{numData}}</span>
-          <span>{{totalData}}</span>
-        </div>
+<ion-content>
+  <div id="topcontainer">
+    <div>Your are </div>
+    <p>{{totalPoints}}</p>
+    <p>away from bronze</p>
   </div>
-
-  <div>
-    <button ion-button block (click)="hello()">hello</button> 
-    
-  </div>     
-      <!--
-  <ion-list>
-    <ion-item *ngFor="let item of arrData">
-      <span>{{item}}</span>
-    </ion-item>
-  
-  </ion-list>
--->
   <canvas #valueBarsCanvas ></canvas>
-  <ion-card>
-    <ion-row>
-      <ion-col col-6>
-        Unlock Gold Member
-      </ion-col>
-      <ion-col col-6> 
-        2000 of 3000
-      </ion-col>
-    </ion-row>
-    <ion-card-header>
-      Green
-    </ion-card-header>
-    <ion-item>
+  
      <!-- <pogress-bar [pogress]="tosilver()"></pogress-bar> --> 
-     
-    </ion-item>
-</ion-card>
-    <circle-bar [value]="50"></circle-bar>
+  <p>Popular Rewards</p>   
+  <ion-slides slidesPerView="2.5" spaceBetween="5">
+      <ion-slide *ngFor="let coupons of availcoupons">
+        <ion-card id="slidercard"> 
+          <div> <img id="pic" src="{{coupons.photo}}"/>  </div>
+          <div>{{coupons.rewards}}</div>
+          <div>{{coupons.description}}</div>
+        </ion-card>
+      </ion-slide>
+  </ion-slides>
+
+   <!-- <circle-bar [value]="50"></circle-bar> -->
 </ion-content>
+
+

@@ -7,83 +7,18 @@
 
 <ion-content padding>
     <ion-slides pager>
-      <ion-slide style="">
-    <img class="hi" src="../assets/imgs/icon.jpg"/>
-    <h1>Earn your recycling points</h1>
-    <p>Earn points upon bringing your own recyclables!</p>
-    
-      <!--
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-         
-            <img class="hi" src="../assets/imgs/utensils.png"/>
-            <ion-card-content>
-              <ion-card-title>
-                Utensils
-                </ion-card-title>
-              <p>
-               10 points
-              </p>
-            </ion-card-content>
-         
-        </ion-col>
-        <ion-col>
-         
-            <img class="hi" src="../assets/imgs/plasticbag.png"/>
-            <ion-card-content>
-              <ion-card-title>
-                Reusable Bag
-                </ion-card-title>
-              <p>
-                10 points
-              </p>
-            </ion-card-content>
-         
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          
-            <img class="hi" src="../assets/imgs/cup.png"/>
-            <ion-card-content>
-              <ion-card-title>
-                Cup
-                </ion-card-title>
-              <p>
-               10 poins
-              </p>
-            </ion-card-content>
-          
-        </ion-col>
-        <ion-col>
-          
-            <img class="hi" src="../assets/imgs/container.png"/>
-            <ion-card-content>
-              <ion-card-title>
-                Container
-                </ion-card-title>
-              <p>
-                10 points
-              </p>
-            </ion-card-content>
-          
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    -->
+      <ion-slide>
+          <img class="hi" src="../assets/imgs/icon.jpg"/>
+          <h1>Earn your recycling points</h1>
+          <p>Earn points upon bringing your own recyclables!</p>
+          <button ion-button round color="main" (click)="closeinformationpage()">Got it</button>
+      </ion-slide>
 
-   
- 
-    <button ion-button block (click)="closeinformationpage()">Got it</button>
-  </ion-slide>
-
-  <ion-slide>
-      <img class="hi" src="../assets/imgs/icon3.jpg"/>
-      <h1>Earn your recycling points</h1>
-      <p>Earn points upon bringing your own recyclables!</p>
-      <button ion-button block (click)="closeinformationpage()">Got it</button>
-  </ion-slide>
-
+      <ion-slide>
+          <img class="hi" src="../assets/imgs/icon3.jpg"/>
+          <h1>Earn your recycling points</h1>
+          <p>Earn points upon bringing your own recyclables!</p>
+          <button ion-button round color="main" (click)="closeinformationpage()">Got it</button>
+      </ion-slide>
   </ion-slides>
-  </ion-content>
+</ion-content>

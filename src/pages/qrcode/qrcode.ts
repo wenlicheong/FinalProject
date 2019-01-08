@@ -9,8 +9,8 @@ import {Chart} from 'chart.js';
 import { TotalPoints } from '../../models/totalpoints.interface';
 import { UserCoupons } from '../../models/usercoupons';
 import { InformationPage } from '../information/information';
-import { TransitiveCompileNgModuleMetadata } from '@angular/compiler';
-
+import { Slides } from 'ionic-angular';
+import { Observable } from 'rxjs';
 
 /**
  * Generated class for the QrcodePage page.
@@ -37,11 +37,12 @@ export class QrcodePage {
   ref: AngularFireList<any>;
   goldtier=300;
   silvertier=300;
- 
+  availcoupons=[];
 
   transaction = {
-    points:0
   }
+
+
 
   totalPoints ={} as TotalPoints;
   coupons = {} as UserCoupons;
@@ -51,7 +52,16 @@ export class QrcodePage {
   chartData= null;
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public scanner:BarcodeScanner, private fdb: AngularFireDatabase,private afAuth: AngularFireAuth) {
-     
+   
+   
+   
+    //displaying coupons
+    this.fdb.list("/AvailCoupons/").valueChanges().subscribe(_data=>{
+      this.availcoupons=_data;                           //subscribe passes the value and displays it in the console
+
+    });
+   
+  //taking total data and displaying
   this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
     this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
       this.ref.valueChanges().subscribe(result=>{
@@ -69,7 +79,7 @@ export class QrcodePage {
       
   })
 
-  this.userCoupons();
+  this.userCoupons(); 
 
   }
 
@@ -97,97 +107,9 @@ export class QrcodePage {
       });  
     })    
   }
- 
-/*
-  scan(){
-    this.options={
-      prompt:'Scan your barcode'
-    }; 
-
-    this.scanner.scan(this.options).then((data) => {
-      this.scannedData = data;        //takes data and puts it into scanned data
-      // this.fdb.list("/myItems/").push(this.scannedData) ; //pushes scanned data into database
-        this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-          this.fdb.list('points/'+ auth.uid).push(this.scannedData.text);  //pushing scanned data into specific user
-             //this.numData = parseInt(this.scannedData.text,10); 
-              //this.totalData+=this.numData;
-            this.fdb.list('points/'+ auth.uid).valueChanges().subscribe(_data=>{
-              this.arrData=_data;                           //subscribe passes the value and displays it in the console
-              
-              //console.log(this.arrData);
-
-              this.totalData=0;
-              for (let index = 1; index < this.arrData.length; index++) {               
-                this.totalData += parseInt(this.arrData[index],10);  
-              }
-              //this.numData = parseInt(this.scannedData.text,10); 
-              //this.totalData+=this.numData;
-              //console.log(this.numData);
-             });
-
-            
-
-        })
-    }, (err) => {
-      console.log('Error:',err);
-    })
-      
-  }
-
-*/
-
-  hello(){
-
-    this.options={
-      prompt:'Scan your barcode'
-    }; 
-
-    this.scanner.scan(this.options).then((data) => {
-      this.scannedData = data;        //takes data and puts it into scanned data
-     
-        this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-          this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
-          this.ref.push(this.transaction).then(()=>{
-            this.transaction={
-              points: this.scannedData.text
-            };
-          });  //pushing scanned data into specific user
-   
-        })
-    }, (err) => {
-      console.log('Error:',err);
-    })
-
-  }
-  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QrcodePage');
-
-
-   
-    //place this here so that the graph will load first
-    /*
-    this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-      this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
-        this.ref.valueChanges().subscribe(result=>{
-        this.arrData=result;                           //subscribe passes the value and displays it in the console
-        console.log(this.arrData);
-        this.totalData=0;
-              for (let index = 0; index < this.arrData.length; index++) {               //add values up
-                this.totalData += parseInt(this.arrData[index].points,10);  
-              }
-        this.createChart(this.totalData);
-
-       });
-
-       
-    })
-    */
-  
-
-   
-
   }
 
   createChart(data){

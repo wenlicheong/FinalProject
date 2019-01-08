@@ -16,8 +16,9 @@ page-information {
 
         width:500px;
         margin:auto;
-        padding:1px;
-        
+        padding-left:50px;
+        padding-right:50px;
+    
     }
 
     .card-title-md {
@@ -31,5 +32,10 @@ page-information {
     .card-md{
         min-height: 230px;
     }
+
+    .swiper-pagination-bullet-active {
+        background: color($colors,main);
+        opacity: 1;
+        }
 
 }
