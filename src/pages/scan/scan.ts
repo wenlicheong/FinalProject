@@ -4,7 +4,6 @@ import { BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scan
 import { AngularFireDatabase} from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireList} from 'angularfire2/database/interfaces';
-import { QrcodePage } from '../qrcode/qrcode';
 
 /**
  * Generated class for the ScanPage page.
@@ -24,10 +23,14 @@ export class ScanPage {
   scannedData:any={};
   transaction = {};
   ref: AngularFireList<any>;
-
+  date;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public scanner:BarcodeScanner,private fdb: AngularFireDatabase,private afAuth: AngularFireAuth) {
     
-    
+    this.fdb.object("Date/").valueChanges().subscribe(_data=>{
+      this.date=_data;                           //subscribe passes the value and displays it in the console
+
+    });
   
   } 
 
@@ -39,16 +42,30 @@ export class ScanPage {
 
     this.scanner.scan(this.options).then((data) => {
       this.scannedData = data;        //takes data and puts it into scanned data
-     
-        this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-          this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
-          this.ref.push(this.transaction).then(()=>{
-            this.transaction={
-              points: this.scannedData.text
-            };
-          });  //pushing scanned data into specific user
-   
-        })
+          if (this.scannedData==this.date){
+                this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+                  this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
+                      this.ref.push(this.transaction).then(()=>{
+                        this.transaction={
+                          points: 5
+                        };
+                      });  //pushing scanned data into specific user
+          
+                })
+          }
+          else{
+            this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+              this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
+                  this.ref.push(this.transaction).then(()=>{
+                    this.transaction={
+                      points: 0
+                    };
+                  });  //pushing scanned data into specific user
+      
+            })
+          
+          }
+
     }, (err) => {
       console.log('Error:',err);
     })

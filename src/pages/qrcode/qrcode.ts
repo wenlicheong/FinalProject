@@ -42,8 +42,6 @@ export class QrcodePage {
   transaction = {
   }
 
-
-
   totalPoints ={} as TotalPoints;
   coupons = {} as UserCoupons;
 
@@ -52,9 +50,7 @@ export class QrcodePage {
   chartData= null;
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public scanner:BarcodeScanner, private fdb: AngularFireDatabase,private afAuth: AngularFireAuth) {
-   
-   
-   
+
     //displaying coupons
     this.fdb.list("/AvailCoupons/").valueChanges().subscribe(_data=>{
       this.availcoupons=_data;                           //subscribe passes the value and displays it in the console
