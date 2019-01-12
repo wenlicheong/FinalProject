@@ -4,20 +4,22 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>scan</ion-title>
-  </ion-navbar>
-
-</ion-header>
+<ion-header no-border>
+    <ion-navbar>
+      <ion-title></ion-title>
+        <ion-buttons end>
+          <button ion-button icon-only (click)="navigatetoinformationpage()">
+            <ion-icon name="information-circle" ></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-navbar>
+  </ion-header>
 
 
 <ion-content padding>
-  <h1>Scan Qr code</h1>
-  <img src="../assets/imgs/qrcode.svg">
-  <div>
-    <button ion-button block (click)="scan()">Scan here</button> 
+  <h1 text-center margin-top>Scan Qr code</h1>
+  <div><img src="../assets/imgs/qrcode.svg"></div>
+  <div text-center>
+    <button ion-button round color="main" id="shadow" (click)="scan()">START SCANNING</button> 
   </div>
-  <div>{{this.date}}</div>
 </ion-content>

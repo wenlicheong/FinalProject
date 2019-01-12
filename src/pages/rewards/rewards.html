@@ -1,16 +1,19 @@
 
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>rewards</ion-title>
-  </ion-navbar>
-
-</ion-header>
+<ion-header no-border>
+    <ion-navbar>
+      <ion-title></ion-title>
+        <ion-buttons end>
+          <button ion-button icon-only (click)="navigatetoinformationpage()">
+            <ion-icon name="information-circle" ></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-navbar>
+  </ion-header>
 
 <ion-content padding>
 
   <ion-card id="carddesign" *ngIf= "this.bronze==1" >
-      <img id="pic" src="{{bronzeRef.photo}}"/>  
+    <div text-center> <img id="pic" src="{{bronzeRef.photo}}"/> </div> 
         <ion-card-content>
           <ion-card-title>
                <span>{{bronzeRef.rewards}}</span>
@@ -19,11 +22,11 @@
              {{bronzeRef.description}}
           </p>
         </ion-card-content>
-       <button ion-button clear (click)= "couponbronzepage()">Claim Coupon</button>   
+       <button ion-button clear color="main" (click)= "couponbronzepage()">Claim Coupon</button>   
   </ion-card>
 
   <ion-card id="carddesign" *ngIf= "this.silver==1" >
-      <img id="pic" src="{{silverRef.photo}}"/>  
+      <div text-center><img id="pic" src="{{silverRef.photo}}"/>  </div>
         <ion-card-content>
           <ion-card-title>
                <span>{{silverRef.rewards}}</span>
@@ -32,12 +35,12 @@
              {{silverRef.description}}
           </p>
         </ion-card-content>
-       <button ion-button clear (click)=  "couponsilverpage()" >Claim Coupon</button>   
+       <button ion-button clear color="main" (click)=  "couponsilverpage()" >Claim Coupon</button>   
   </ion-card>
 
   <ion-card id="carddesign" *ngIf= "this.gold==1" >
-    
-      <img id="pic" src="{{goldRef.photo}}"/>  
+      <div text-center>
+      <img id="pic" src="{{goldRef.photo}}"/>  </div>
         <ion-card-content>
           <ion-card-title>
                <span>{{goldRef.rewards}}</span>
@@ -46,7 +49,7 @@
              {{goldRef.description}}
           </p>
         </ion-card-content>
-       <button ion-button clear (click)=  "coupongoldpage()" >Claim Coupon</button>   
+       <button ion-button clear color="main" (click)=  "coupongoldpage()" >Claim Coupon</button>   
   </ion-card>
  
 </ion-content>

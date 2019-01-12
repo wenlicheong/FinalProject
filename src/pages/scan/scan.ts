@@ -24,25 +24,25 @@ export class ScanPage {
   transaction = {};
   ref: AngularFireList<any>;
   date;
+
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public scanner:BarcodeScanner,private fdb: AngularFireDatabase,private afAuth: AngularFireAuth) {
-    
-    this.fdb.object("Date/").valueChanges().subscribe(_data=>{
-      this.date=_data;                           //subscribe passes the value and displays it in the console
 
-    });
-  
   } 
 
   scan(){
+
+    this.fdb.object("Date/").valueChanges().subscribe(_data=>{
+      this.date=_data;                       //subscribe passes the value and displays it in the console
+    });
 
     this.options={
       prompt:'Scan your barcode'
     }; 
 
     this.scanner.scan(this.options).then((data) => {
-      this.scannedData = data;        //takes data and puts it into scanned data
-          if (this.scannedData==this.date){
+      this.scannedData = data.text       //takes data and puts it into scanned data
+      if (this.scannedData==this.date){
                 this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
                   this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
                       this.ref.push(this.transaction).then(()=>{
