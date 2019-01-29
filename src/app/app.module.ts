@@ -9,6 +9,8 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+//import { GooglePlus } from '@ionic-native/google-plus';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 /*references of libraries that have to be imported before it is used*/
 
 import { MyApp } from './app.component';
@@ -17,7 +19,6 @@ import { CouponPage } from '../pages/coupon/coupon';
 import { CouponsilverPage } from '../pages/couponsilver/couponsilver';
 import { CoupongoldPage } from '../pages/coupongold/coupongold';
 import { InformationPage } from '../pages/information/information';
-
 
 @NgModule({
   declarations: [
@@ -35,7 +36,6 @@ import { InformationPage } from '../pages/information/information';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFireStorageModule
-
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,7 +49,8 @@ import { InformationPage } from '../pages/information/information';
     StatusBar,
     SplashScreen,
     BarcodeScanner,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GooglePlus
   ]
 })
 export class AppModule {}

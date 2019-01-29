@@ -11,6 +11,7 @@ import { UserCoupons } from '../../models/usercoupons';
 import { InformationPage } from '../information/information';
 import { Slides } from 'ionic-angular';
 import { Observable } from 'rxjs';
+import { BrowserTransferStateModule } from '@angular/platform-browser';
 
 /**
  * Generated class for the QrcodePage page.
@@ -54,7 +55,6 @@ export class QrcodePage {
     //displaying coupons
     this.fdb.list("/AvailCoupons/").valueChanges().subscribe(_data=>{
       this.availcoupons=_data;                           //subscribe passes the value and displays it in the console
-
     });
    
   //taking total data and displaying
@@ -69,21 +69,15 @@ export class QrcodePage {
             }
       this.createChart(this.totalData);
       this.insertPoints(this.totalData);
-      
-
      });
-      
   })
-
   this.userCoupons(); 
-
   }
 
   insertPoints(data){
     this.totalPoints=data;
     this.afAuth.authState.take(1).subscribe(auth=>{
-      this.fdb.object('TotalPoints/'+ auth.uid).set(this.totalPoints);
-        
+      this.fdb.object('TotalPoints/'+ auth.uid).set(this.totalPoints);      
     })
   }
 
@@ -119,6 +113,7 @@ export class QrcodePage {
     type: 'doughnut',
     data: {
         labels: ["Current", "Bronze"],
+  
         datasets: [{
             label: 'Recycling Journey',
             data: [this.chartData, this.capData-this.chartData],
@@ -134,6 +129,13 @@ export class QrcodePage {
         }]
     },
     options: {
+      legend: {
+        position:'bottom',
+        display: true,
+        labels: {
+            fontColor: 'rgb(255, 99, 132)'
+        }
+      },
         scales: {
             
         }, 
@@ -240,6 +242,9 @@ export class QrcodePage {
     navigatetoinformationpage(){
       this.modalCtrl.create(InformationPage).present();
     }
+
+    
+   
 
 }
 

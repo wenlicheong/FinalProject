@@ -6,11 +6,27 @@ page-qrcode {
 
     #topcontainer{
         background-color: #ecfffd ;
-        height: 100px;
+        height: 400px;
     }
 
     #slidercard{
         border-radius: 5px;
     }
+
+    #loadingcirclecard{
+        padding:20px;
+        border-radius:5px;
+    }
+
+    ion-slides.slides {
+        height: auto;
+      }
+      
+      .swiper-pagination {
+        bottom: 0px;
+      }
+
+
+    
 
 }
