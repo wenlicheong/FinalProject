@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage, ToastController } from 'ionic-angular';
 import { User } from "../../models/user";
 import { AngularFireAuth } from 'angularfire2/auth';
-import { GooglePlus } from '@ionic-native/google-plus/ngx';
-import firebase from 'firebase';
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -17,8 +16,7 @@ import firebase from 'firebase';
 })
 export class LoginPage {
   user={} as User;
- 
-  constructor(public googleplus: GooglePlus, private afAuth: AngularFireAuth, private toast: ToastController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private afAuth: AngularFireAuth, private toast: ToastController, public navCtrl: NavController, public navParams: NavParams) {
   
   }
 
@@ -46,14 +44,4 @@ export class LoginPage {
    this.navCtrl.push('RegisterPage');  //go to register page
  }
 
- /*
- loginWithGP(){
-   this.afAuth.auth.signInWithPopup(new firebase.authGoogleAuthProvider())
-   .then(res=>{
-     console.log('From --Google--');
-     console.log(res);
-   })
- }
-
- */
 }
