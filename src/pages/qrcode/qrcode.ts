@@ -39,6 +39,8 @@ export class QrcodePage {
   silvertier=300;
   availcoupons=[];
 
+  date;
+
   transaction = {
   }
 
@@ -79,6 +81,52 @@ export class QrcodePage {
 
   }
 
+  remainingPoints(){
+    return 300 - this.totalData;
+  }
+
+  scan(){
+
+    this.fdb.object("Date/").valueChanges().subscribe(_data=>{
+      this.date=_data;                       //subscribe passes the value and displays it in the console
+    });
+
+    this.options={
+      prompt:'Scan your barcode'
+    }; 
+
+    this.scanner.scan(this.options).then((data) => {
+      this.scannedData = data.text       //takes data and puts it into scanned data
+      if (this.scannedData==this.date){
+                this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+                  this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
+                      this.ref.push(this.transaction).then(()=>{
+                        this.transaction={
+                          points: 5
+                        };
+                      });  //pushing scanned data into specific user
+          
+                })
+          }
+          else{
+            this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+              this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
+                  this.ref.push(this.transaction).then(()=>{
+                    this.transaction={
+                      points: 0
+                    };
+                  });  //pushing scanned data into specific user
+      
+            })
+          
+          }
+
+    }, (err) => {
+      console.log('Error:',err);
+    })
+
+  }
+  
   insertPoints(data){
     this.totalPoints=data;
     this.afAuth.authState.take(1).subscribe(auth=>{
@@ -241,6 +289,9 @@ export class QrcodePage {
       this.modalCtrl.create(InformationPage).present();
     }
 
+
+   
+  
 }
 
 

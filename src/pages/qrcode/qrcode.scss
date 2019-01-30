@@ -6,7 +6,24 @@ page-qrcode {
 
     #topcontainer{
         background-color: #ecfffd ;
-        height: 400px;
+        height: 180px;
+        padding:30px;
+        #mainpoint{
+            font-size: 50px;
+            color: map-get($colors, main);
+            #secondarypoint{
+                font-size: 40px;
+                color: map-get($colors, main);
+            }
+        }
+    }
+
+    #squarebutton{
+        width: 150px !important;
+        height: 150px !important;
+        border-radius: 25px;
+        background-color: #fff;
+        color: #000;
     }
 
     #slidercard{
