@@ -126,6 +126,10 @@ export class QrcodePage {
     })
 
   }
+
+  rewardspage(){
+    this.navCtrl.push('RewardsPage');
+  }
   
   insertPoints(data){
     this.totalPoints=data;

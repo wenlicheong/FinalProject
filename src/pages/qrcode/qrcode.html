@@ -21,26 +21,35 @@
     <p text-center>{{remainingPoints()}} points till next reward</p>
   </div>
 
+<ion-card id=treecard>
+  <ion-row>
+    <ion-col>
+
+    </ion-col>
+    <ion-col>
+      
+    </ion-col>
+  </ion-row>
+</ion-card>
+
 <ion-row>
-  <ion-col>
-    <ion-buttons>
+  <ion-col width-50 style="text-align: right">
       <button ion-button id="squarebutton" (click)="scan()">Qr Scanner</button> 
-    </ion-buttons>
   </ion-col>
-  <ion-col>
-    <ion-buttons>
-      <button ion-button id="squarebutton" (click)="scan()">My Rewards</button> 
-    </ion-buttons>
+  <ion-col width-50 style="text-align: left">
+      <button ion-button id="squarebutton" (click)="rewardspage()">My Rewards</button> 
   </ion-col>
 </ion-row>
+
 
   <ion-card id=loadingcirclecard>
   <canvas #valueBarsCanvas ></canvas>
   </ion-card>
+  
  <!-- 
 <pogress-bar [pogress]="tosilver()"></pogress-bar>
  -->
-
+ <!--
   <p>Popular Rewards</p>   
   <ion-slides slidesPerView="2.5" spaceBetween="5">
       <ion-slide *ngFor="let coupons of availcoupons">
@@ -51,7 +60,7 @@
         </ion-card>
       </ion-slide>
   </ion-slides>
-
+  -->
    <!-- <circle-bar [value]="50"></circle-bar> -->
 
    

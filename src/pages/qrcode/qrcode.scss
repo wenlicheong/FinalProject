@@ -3,6 +3,7 @@ page-qrcode {
     .toolbar-background {
         background-color: #ecfffd ;
       }
+    
 
     #topcontainer{
         background-color: #ecfffd ;
@@ -16,6 +17,10 @@ page-qrcode {
                 color: map-get($colors, main);
             }
         }
+    }
+
+    #treecard{
+        
     }
 
     #squarebutton{
