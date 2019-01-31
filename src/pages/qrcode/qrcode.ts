@@ -5,19 +5,11 @@ import { AngularFireDatabase} from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Point } from "../../models/points";
 import {AngularFireList} from 'angularfire2/database/interfaces';
-import {Chart} from 'chart.js';
+//import {Chart} from 'chart.js';
 import { TotalPoints } from '../../models/totalpoints.interface';
 import { UserCoupons } from '../../models/usercoupons';
 import { InformationPage } from '../information/information';
-import { Slides } from 'ionic-angular';
-import { Observable } from 'rxjs';
-
-/**
- * Generated class for the QrcodePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {Observable} from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -40,6 +32,7 @@ export class QrcodePage {
   availcoupons=[];
 
   date;
+  profileData: Observable<any>;
 
   transaction = {
   }
@@ -52,15 +45,21 @@ export class QrcodePage {
   chartData= null;
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public scanner:BarcodeScanner, private fdb: AngularFireDatabase,private afAuth: AngularFireAuth) {
-
+/*
     //displaying coupons
     this.fdb.list("/AvailCoupons/").valueChanges().subscribe(_data=>{
       this.availcoupons=_data;                           //subscribe passes the value and displays it in the console
 
     });
-   
+*/   
+
   //taking total data and displaying
   this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+
+    this.afAuth.authState.take(1).subscribe(auth=>{
+      this.profileData=this.fdb.object('profile/'+ auth.uid).valueChanges();
+      })
+
     this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
       this.ref.valueChanges().subscribe(result=>{
       this.arrData=result;                           //subscribe passes the value and displays it in the console
@@ -69,7 +68,7 @@ export class QrcodePage {
             for (let index = 0; index < this.arrData.length; index++) {               //add values up
               this.totalData += parseInt(this.arrData[index].points,10);  
             }
-      this.createChart(this.totalData);
+      //this.createChart(this.totalData);
       this.insertPoints(this.totalData);
       
 
@@ -77,7 +76,7 @@ export class QrcodePage {
       
   })
 
-  this.userCoupons(); 
+ // this.userCoupons(); 
 
   }
 
@@ -138,7 +137,7 @@ export class QrcodePage {
         
     })
   }
-
+ /*
   userCoupons(){
     this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
       this.fdb.object('TotalPoints/'+ auth.uid).valueChanges().subscribe(data=>{
@@ -155,118 +154,7 @@ export class QrcodePage {
       });  
     })    
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad QrcodePage');
-  }
-
-  createChart(data){
-   if (data>=100) {
-     this.createsilverChart(data);
-   }
-   else{
-  this.chartData=data;
-  this.capData= 100;
-  this.valueBarsChart = new Chart(this.valueBarsCanvas.nativeElement, {
-    type: 'doughnut',
-    data: {
-        labels: ["Current", "Bronze"],
-        datasets: [{
-            label: 'Recycling Journey',
-            data: [this.chartData, this.capData-this.chartData],
-            backgroundColor: [
-                'rgba(60, 179, 113)',
-                'rgba(143, 188, 143)'               
-            ],
-        /*  borderColor: [
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)'              
-            ], */
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            
-        }, 
-        cutoutPercentage:70
-
-        
-    }
-  });
-
-  }
-}
-
-  createsilverChart(data){
-    if (data>=200){
-      this.creategoldChart(data);
-    }
-    else{
-    this.chartData=data;
-    this.capData= 100;
-    this.valueBarsChart = new Chart(this.valueBarsCanvas.nativeElement, {
-      type: 'doughnut',
-      data: {
-          labels: ["Current", "Silver"],
-          datasets: [{
-              label: 'Recycling Journey',
-              data: [this.chartData, this.capData-this.chartData],
-              backgroundColor: [
-                'rgba(60, 179, 113)',
-                'rgba(143, 188, 143)'                 
-              ],
-           /*   borderColor: [
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)'              
-              ],*/
-              borderWidth: 1
-          }]
-      },
-      options: {
-          scales: {
-              
-          }, 
-          cutoutPercentage:70
-  
-      }
-    });
-  
-    }
-  }
-
-  creategoldChart(data){
-    this.chartData=data;
-    this.capData= 100;
-    this.valueBarsChart = new Chart(this.valueBarsCanvas.nativeElement, {
-      type: 'doughnut',
-      data: {
-          labels: ["Current", "Gold"],
-          datasets: [{
-              label: 'Recycling Journey',
-              data: [this.chartData, this.capData-this.chartData],
-              backgroundColor: [
-                'rgba(60, 179, 113)',
-                'rgba(143, 188, 143)'               
-              ],
-          /*    borderColor: [
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)'              
-              ], */
-              borderWidth: 1
-          }]
-      },
-      options: {
-          scales: {
-              
-          }, 
-          cutoutPercentage:70
-  
-      }
-    });
-  
-    }
-
+  */
 
     tosilver(){
       this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user

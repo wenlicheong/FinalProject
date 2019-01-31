@@ -1,14 +1,36 @@
 page-qrcode {
 
+    
+    $border-radius: 20px;
+    
+
     .toolbar-background {
         background-color: #ecfffd ;
       }
     
+    #greetingfont{
+        font-size: 30px;
+    }
 
     #topcontainer{
         background-color: #ecfffd ;
-        height: 180px;
-        padding:30px;
+        height: 200px;
+        -webkit-clip-path: circle(80% at 50% 0);
+        clip-path: circle(80% at 50% 0);
+        padding:40px;
+        z-index: -1;
+    }
+
+    #container{
+        padding:20px;
+        
+    }
+    #pointscontainer{
+        z-index:1;
+        margin-top:-70px;
+        border-radius:$border-radius;
+        padding-top:30px;
+        padding-bottom:30px;
         #mainpoint{
             font-size: 50px;
             color: map-get($colors, main);
@@ -19,16 +41,22 @@ page-qrcode {
         }
     }
 
-    #treecard{
+    #moneycontainer{
         
     }
 
     #squarebutton{
         width: 150px !important;
         height: 150px !important;
-        border-radius: 25px;
+        border-radius: $border-radius;
         background-color: #fff;
         color: #000;
+    }
+
+    .icon{
+        justify-content: center;
+        align-content: center;
+        padding-bottom: 5px;
     }
 
     #slidercard{

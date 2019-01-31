@@ -14,38 +14,54 @@
     </ion-navbar>
 </ion-header>
 
-
 <ion-content>
-  <div id="topcontainer">
-    <div text-center id="mainpoint">{{totalPoints}} /<a id="secondarypoint">300</a> </div>
-    <p text-center>{{remainingPoints()}} points till next reward</p>
-  </div>
-
-<ion-card id=treecard>
-  <ion-row>
-    <ion-col>
-
-    </ion-col>
-    <ion-col>
+ 
+<div id="topcontainer">
+  <div id="greetingfont">Hi {{(profileData|async)?.username}}!</div>
+  <div>What are you gonna dapao today?</div>
+</div>
+<div id="container">
+<ion-grid>
+  <ion-card id="pointscontainer"> 
+      <div text-center id="mainpoint">{{totalPoints}} /<a id="secondarypoint">300</a> </div>
+      <p text-center>{{remainingPoints()}} points till next reward</p>
+  </ion-card>
+  <ion-card id="moneycontainer"> 
       
+  </ion-card>
+  <ion-row>
+    <ion-col text-center align-items-left>
+        <button ion-button id="squarebutton" (click)="scan()">
+          <div>
+            <ion-row class=icon>
+              <ion-icon name="qr-scanner" style="zoom:2.0;"></ion-icon>
+            </ion-row>
+            <ion-row>
+              Qr Scanner
+            </ion-row>
+        </div>
+      </button> 
+    </ion-col>
+    <ion-col text-center align-items-right>
+        <button ion-button id="squarebutton" (click)="rewardspage()">
+          <div>
+            <ion-row class=icon>
+                <ion-icon name="trophy" style="zoom:2.0;"></ion-icon>
+            </ion-row>
+            <ion-row>
+            My Rewards
+            </ion-row>
+          </div>
+        </button> 
     </ion-col>
   </ion-row>
-</ion-card>
-
-<ion-row>
-  <ion-col width-50 style="text-align: right">
-      <button ion-button id="squarebutton" (click)="scan()">Qr Scanner</button> 
-  </ion-col>
-  <ion-col width-50 style="text-align: left">
-      <button ion-button id="squarebutton" (click)="rewardspage()">My Rewards</button> 
-  </ion-col>
-</ion-row>
-
-
+</ion-grid>
+</div>
+<!--
   <ion-card id=loadingcirclecard>
   <canvas #valueBarsCanvas ></canvas>
   </ion-card>
-  
+-->  
  <!-- 
 <pogress-bar [pogress]="tosilver()"></pogress-bar>
  -->

@@ -16,9 +16,7 @@ import { IonicPage, NavController, NavParams, Tabs } from 'ionic-angular';
 })
 export class MainPage {
   tab1 = 'QrcodePage';
-  tab2= 'ScanPage';
-  tab3 = 'RewardsPage';
-  tab4 = 'ProfilePage';
+  tab2 = 'ProfilePage';
   
 
   @ViewChild('myTabs') tabRef: Tabs;
