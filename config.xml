@@ -90,6 +90,7 @@
     <allow-navigation href="http://192.168.0.131:8101" />
     <allow-navigation href="http://192.168.1.128:8101" />
     <allow-navigation href="http://10.27.70.20:8100" />
+    <plugin name="cordova-plugin-statusbar" spec="2.4.2" />
     <engine name="browser" spec="5.0.4" />
     <engine name="android" spec="7.1.4" />
 </widget>

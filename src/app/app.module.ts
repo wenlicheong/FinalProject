@@ -18,7 +18,7 @@ import { CouponsilverPage } from '../pages/couponsilver/couponsilver';
 import { CoupongoldPage } from '../pages/coupongold/coupongold';
 import { InformationPage } from '../pages/information/information';
 
-
+ 
 @NgModule({
   declarations: [
     MyApp,   /*parent component*/

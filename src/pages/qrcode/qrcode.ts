@@ -56,9 +56,9 @@ export class QrcodePage {
   //taking total data and displaying
   this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
 
-    this.afAuth.authState.take(1).subscribe(auth=>{
-      this.profileData=this.fdb.object('profile/'+ auth.uid).valueChanges();
-      })
+    //getting profile data for name customisation
+    this.profileData=this.fdb.object('profile/'+ auth.uid).valueChanges();
+      
 
     this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
       this.ref.valueChanges().subscribe(result=>{
@@ -68,20 +68,31 @@ export class QrcodePage {
             for (let index = 0; index < this.arrData.length; index++) {               //add values up
               this.totalData += parseInt(this.arrData[index].points,10);  
             }
-      //this.createChart(this.totalData);
       this.insertPoints(this.totalData);
-      
-
      });
       
   })
+  this.userCoupons(); 
+  }
 
- // this.userCoupons(); 
-
+  insertPoints(data){
+    this.totalPoints=data;
+    this.afAuth.authState.take(1).subscribe(auth=>{
+      this.fdb.object('TotalPoints/'+ auth.uid).set(this.totalPoints);
+        
+    })
   }
 
   remainingPoints(){
-    return 300 - this.totalData;
+    return 100 - this.totalData;
+  }
+
+  moneySaved(){
+    return 0.20*this.totalData;
+  }
+
+  turtlesSaved(){
+    return 0.1*this.totalData;
   }
 
   scan(){
@@ -101,7 +112,7 @@ export class QrcodePage {
                   this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
                       this.ref.push(this.transaction).then(()=>{
                         this.transaction={
-                          points: 5
+                          points: 10
                         };
                       });  //pushing scanned data into specific user
           
@@ -130,14 +141,6 @@ export class QrcodePage {
     this.navCtrl.push('RewardsPage');
   }
   
-  insertPoints(data){
-    this.totalPoints=data;
-    this.afAuth.authState.take(1).subscribe(auth=>{
-      this.fdb.object('TotalPoints/'+ auth.uid).set(this.totalPoints);
-        
-    })
-  }
- /*
   userCoupons(){
     this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
       this.fdb.object('TotalPoints/'+ auth.uid).valueChanges().subscribe(data=>{
@@ -154,36 +157,11 @@ export class QrcodePage {
       });  
     })    
   }
-  */
-
-    tosilver(){
-      this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-        this.fdb.object('TotalPoints/'+ auth.uid).valueChanges().subscribe(data=>{
-          this.value=data;
-          if (this.value>=200) {
-            this.togold();
-          }
-        });  
-      })    
-      return this.silvertier - this.value;
-    }
-
-    togold(){
-      this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-        this.fdb.object('TotalPoints/'+ auth.uid).valueChanges().subscribe(data=>{
-          this.value=data;
-        });  
-      })    
-      return this.goldtier - this.value;
-    }
-
+  
     navigatetoinformationpage(){
       this.modalCtrl.create(InformationPage).present();
     }
-
-
-   
-  
+ 
 }
 
 

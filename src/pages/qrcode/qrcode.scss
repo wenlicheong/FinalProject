@@ -41,8 +41,33 @@ page-qrcode {
         }
     }
 
-    #moneycontainer{
-        
+    #moneycard{
+        width: 150px !important;
+        height: 150px !important;
+        border-radius: $border-radius;
+        padding:30px;
+        font-size: 1.5rem;
+        font-weight: 500;
+        #moneycardfont{
+            padding-top:10px;
+            font-size: 30px;
+            color: map-get($colors, main);
+
+        }
+    }
+
+    #environmentcard{
+        width: 150px !important;
+        height: 150px !important;
+        border-radius: $border-radius;
+        padding:30px;
+        font-size: 1.5rem;
+        font-weight: 500;
+        #environmentcardfont{
+            padding-top:10px;
+            font-size: 30px;
+            color: map-get($colors, main);
+        }
     }
 
     #squarebutton{
@@ -58,24 +83,6 @@ page-qrcode {
         align-content: center;
         padding-bottom: 5px;
     }
-
-    #slidercard{
-        border-radius: 5px;
-    }
-
-    #loadingcirclecard{
-        padding:20px;
-        border-radius:5px;
-    }
-
-    ion-slides.slides {
-        height: auto;
-      }
-      
-      .swiper-pagination {
-        bottom: 0px;
-      }
-
 
     
 

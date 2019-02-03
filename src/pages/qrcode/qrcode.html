@@ -23,12 +23,23 @@
 <div id="container">
 <ion-grid>
   <ion-card id="pointscontainer"> 
-      <div text-center id="mainpoint">{{totalPoints}} /<a id="secondarypoint">300</a> </div>
+      <div text-center id="mainpoint">{{totalPoints}} /<a id="secondarypoint">100</a> </div>
       <p text-center>{{remainingPoints()}} points till next reward</p>
   </ion-card>
-  <ion-card id="moneycontainer"> 
-      
-  </ion-card>
+  <ion-row>
+    <ion-col text-center align-items-left>
+      <ion-card id="moneycard"> 
+        <ion-row justify-content-center>Estimated savings</ion-row>
+        <ion-row justify-content-center id="moneycardfont">{{moneySaved()}}</ion-row>
+    </ion-card>
+    </ion-col>
+    <ion-col text-center align-items-right>
+      <ion-card id="environmentcard"> 
+        <ion-row justify-content-center>Turtles saved</ion-row>
+        <ion-row justify-content-center id="environmentcardfont">{{turtlesSaved()}}</ion-row>
+    </ion-card>
+    </ion-col>
+  </ion-row>
   <ion-row>
     <ion-col text-center align-items-left>
         <button ion-button id="squarebutton" (click)="scan()">
