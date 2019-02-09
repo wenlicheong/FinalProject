@@ -7,6 +7,7 @@ import {AngularFireList} from 'angularfire2/database/interfaces';
 //import {Chart} from 'chart.js';
 import { TotalPoints } from '../../models/totalpoints.interface';
 import { Point } from '../../models/points';
+import { Remaining } from '../../models/remaining';
 import { UserCoupons } from '../../models/usercoupons';
 import { InformationPage } from '../information/information';
 import {Observable} from 'rxjs/Observable';
@@ -29,21 +30,20 @@ export class QrcodePage {
   }
   totalPoints ={} as TotalPoints;
   coupons = {} as UserCoupons;
-  points: any={} as Point;
+  points:any={} as Point;
   update: Observable<any>;
-
+  remaining:any={} as Remaining;
+  remain: Observable<any>;
+  
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public scanner:BarcodeScanner, private fdb: AngularFireDatabase,private afAuth: AngularFireAuth) {
 
   //taking total data and displaying
   this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-    //getting profile data for name customisation
-    this.profileData=this.fdb.object('profile/'+ auth.uid).valueChanges();
    
-  
-    this.update=this.fdb.object('Point/' + auth.uid).valueChanges();
-    
-
-    this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
+    this.profileData=this.fdb.object('profile/'+ auth.uid).valueChanges();  //getting profile data for name customisation
+    this.update=this.fdb.object('Point/' + auth.uid).valueChanges(); //geting points from database
+    this.remain=this.fdb.object('Remaining/' + auth.uid).valueChanges();
+    this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid)); 
       this.ref.valueChanges().subscribe(result=>{
       this.arrData=result;                           //subscribe passes the value and displays it in the console
       console.log(this.arrData);
@@ -52,7 +52,7 @@ export class QrcodePage {
               this.totalData += parseInt(this.arrData[index].points,10);  
             }
       this.insertPoints(this.totalData);
-      this.updatePoints(this.totalData);
+      this.updatePoints(this.totalData);     //updates points below 100
      });   
   })
   this.userCoupons(); 
@@ -61,8 +61,10 @@ export class QrcodePage {
   updatePoints(data){
     if (data>=100){
       this.points=data-100;
+      this.remaining = 100 - this.points;
       this.afAuth.authState.take(1).subscribe(auth=>{
       this.fdb.object('Point/'+ auth.uid).set(this.points);
+      this.fdb.object('Remaining/'+ auth.uid).set(this.remaining);
     })
     }
   }
@@ -71,35 +73,8 @@ export class QrcodePage {
     this.totalPoints=data;
     this.afAuth.authState.take(1).subscribe(auth=>{
       this.fdb.object('TotalPoints/'+ auth.uid).set(this.totalPoints);
-        
     })
   }
-/*
-  displayedPoints(){
-    if (data>=100){
-      this.points=data-100 ;
-      this.afAuth.authState.take(1).subscribe(auth=>{
-       this.fdb.object('Point/'+ auth.uid).set(this.points);
-     })
-    }
-    else{
-     this.afAuth.authState.take(1).subscribe(auth=>{
-       this.fdb.object('Point/'+ auth.uid).set(data);
-     })
-    }
-  }
- */ 
-
-  /*
-  remainingPoints(){
-    this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-      this.fdb.object('Point/'+ auth.uid).valueChanges().subscribe(data=>{
-        this.points1=data;
-      });  
-    })
-    return 100 - this.points1;
-  }
-  */
 
   moneySaved(){
     return 0.20*this.totalData;
