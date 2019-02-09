@@ -23,7 +23,7 @@
 <div id="container">
 <ion-grid>
   <ion-card id="pointscontainer"> 
-      <div text-center id="mainpoint">{{updatePoints()}}/<a id="secondarypoint">100</a> </div>
+      <div text-center id="mainpoint">{{(update|async)}}/<a id="secondarypoint">100</a> </div>
       <p text-center>{{100 - points}} points till next reward</p>
   </ion-card>
   <ion-row>

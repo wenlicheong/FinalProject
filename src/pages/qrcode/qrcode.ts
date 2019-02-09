@@ -25,13 +25,12 @@ export class QrcodePage {
   ref: AngularFireList<any>;
   date;
   profileData: Observable<any>;
-  points1;
   transaction = {
   }
   totalPoints ={} as TotalPoints;
   coupons = {} as UserCoupons;
-  points:any={} as Point;
-  update;
+  points: any={} as Point;
+  update: Observable<any>;
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public scanner:BarcodeScanner, private fdb: AngularFireDatabase,private afAuth: AngularFireAuth) {
 
@@ -39,6 +38,10 @@ export class QrcodePage {
   this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
     //getting profile data for name customisation
     this.profileData=this.fdb.object('profile/'+ auth.uid).valueChanges();
+   
+  
+    this.update=this.fdb.object('Point/' + auth.uid).valueChanges();
+    
 
     this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
       this.ref.valueChanges().subscribe(result=>{
@@ -49,25 +52,19 @@ export class QrcodePage {
               this.totalData += parseInt(this.arrData[index].points,10);  
             }
       this.insertPoints(this.totalData);
-      //this.displayedPoints();
+      this.updatePoints(this.totalData);
      });   
   })
   this.userCoupons(); 
   }
 
-  updatePoints(){
-    this.afAuth.authState.take(1).subscribe(auth=>{
-    this.fdb.object('TotalPoints/' + auth.uid).valueChanges().subscribe(_data=>{
-      this.update=_data;                      
-    });
-    if (this.update>=100){
-      this.update=this.update - 100
-      return this.update;
-    }
-    else{
-      return this.update;
-    }
+  updatePoints(data){
+    if (data>=100){
+      this.points=data-100;
+      this.afAuth.authState.take(1).subscribe(auth=>{
+      this.fdb.object('Point/'+ auth.uid).set(this.points);
     })
+    }
   }
 
   insertPoints(data){
@@ -147,12 +144,12 @@ export class QrcodePage {
             })
           
           }
-
+          
     }, (err) => {
       console.log('Error:',err);
     })
 
-    this.updatePoints();
+   
 
   }
 
