@@ -23,8 +23,8 @@
 <div id="container">
 <ion-grid>
   <ion-card id="pointscontainer"> 
-      <div text-center id="mainpoint">{{totalPoints}} /<a id="secondarypoint">100</a> </div>
-      <p text-center>{{remainingPoints()}} points till next reward</p>
+      <div text-center id="mainpoint">{{updatePoints()}}/<a id="secondarypoint">100</a> </div>
+      <p text-center>{{100 - points}} points till next reward</p>
   </ion-card>
   <ion-row>
     <ion-col text-center align-items-left>

@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Point } from "../../models/points";
 import {AngularFireList} from 'angularfire2/database/interfaces';
 //import {Chart} from 'chart.js';
 import { TotalPoints } from '../../models/totalpoints.interface';
+import { Point } from '../../models/points';
 import { UserCoupons } from '../../models/usercoupons';
 import { InformationPage } from '../information/information';
 import {Observable} from 'rxjs/Observable';
@@ -20,45 +20,25 @@ export class QrcodePage {
   options: BarcodeScannerOptions;
   scannedData:any={};
   arrData=[];
-  points = {} as Point;
-  numData;
   totalData: any={};
-  capData;
-  loadProgress=50;
   value;
   ref: AngularFireList<any>;
-  goldtier=300;
-  silvertier=300;
-  availcoupons=[];
-
   date;
   profileData: Observable<any>;
-
+  points1;
   transaction = {
   }
-
   totalPoints ={} as TotalPoints;
   coupons = {} as UserCoupons;
-
-  @ViewChild('valueBarsCanvas')valueBarsCanvas;
-  valueBarsChart: any;
-  chartData= null;
+  points:any={} as Point;
+  update;
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public scanner:BarcodeScanner, private fdb: AngularFireDatabase,private afAuth: AngularFireAuth) {
-/*
-    //displaying coupons
-    this.fdb.list("/AvailCoupons/").valueChanges().subscribe(_data=>{
-      this.availcoupons=_data;                           //subscribe passes the value and displays it in the console
-
-    });
-*/   
 
   //taking total data and displaying
   this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-
     //getting profile data for name customisation
     this.profileData=this.fdb.object('profile/'+ auth.uid).valueChanges();
-      
 
     this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid));
       this.ref.valueChanges().subscribe(result=>{
@@ -69,10 +49,25 @@ export class QrcodePage {
               this.totalData += parseInt(this.arrData[index].points,10);  
             }
       this.insertPoints(this.totalData);
-     });
-      
+      //this.displayedPoints();
+     });   
   })
   this.userCoupons(); 
+  }
+
+  updatePoints(){
+    this.afAuth.authState.take(1).subscribe(auth=>{
+    this.fdb.object('TotalPoints/' + auth.uid).valueChanges().subscribe(_data=>{
+      this.update=_data;                      
+    });
+    if (this.update>=100){
+      this.update=this.update - 100
+      return this.update;
+    }
+    else{
+      return this.update;
+    }
+    })
   }
 
   insertPoints(data){
@@ -82,10 +77,32 @@ export class QrcodePage {
         
     })
   }
-
-  remainingPoints(){
-    return 100 - this.totalData;
+/*
+  displayedPoints(){
+    if (data>=100){
+      this.points=data-100 ;
+      this.afAuth.authState.take(1).subscribe(auth=>{
+       this.fdb.object('Point/'+ auth.uid).set(this.points);
+     })
+    }
+    else{
+     this.afAuth.authState.take(1).subscribe(auth=>{
+       this.fdb.object('Point/'+ auth.uid).set(data);
+     })
+    }
   }
+ */ 
+
+  /*
+  remainingPoints(){
+    this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+      this.fdb.object('Point/'+ auth.uid).valueChanges().subscribe(data=>{
+        this.points1=data;
+      });  
+    })
+    return 100 - this.points1;
+  }
+  */
 
   moneySaved(){
     return 0.20*this.totalData;
@@ -134,6 +151,8 @@ export class QrcodePage {
     }, (err) => {
       console.log('Error:',err);
     })
+
+    this.updatePoints();
 
   }
 
