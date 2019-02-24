@@ -12,7 +12,7 @@
 
 <ion-content padding>
 
-  <ion-card id="carddesign" *ngIf= "this.bronze==1" >
+  <ion-card id="carddesign" *ngIf= "this.bronze==1" (click)="couponbronzepage()">
     <div text-center> <img id="pic" src="{{bronzeRef.photo}}"/> </div> 
         <ion-card-content>
           <ion-card-title>

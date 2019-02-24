@@ -22,18 +22,20 @@
 </div>
 <div id="container">
 <ion-grid>
+  <ion-row>
   <ion-card id="pointscontainer"> 
     <div text-center id="mainpoint">{{(update|async)}}/<a id="secondarypoint">100</a> </div>
     <p text-center>{{remain|async}} points till next reward</p>
   </ion-card>
+  </ion-row>
   <ion-row>
-    <ion-col text-center align-items-left>
+    <ion-col col-6 text-center>
       <ion-card id="moneycard"> 
         <ion-row justify-content-center>Estimated savings</ion-row>
         <ion-row justify-content-center id="moneycardfont">{{moneySaved()}}</ion-row>
     </ion-card>
     </ion-col>
-    <ion-col text-center align-items-right>
+    <ion-col col-6 text-center>
       <ion-card id="environmentcard"> 
         <ion-row justify-content-center>Turtles saved</ion-row>
         <ion-row justify-content-center id="environmentcardfont">{{turtlesSaved()}}</ion-row>
@@ -41,7 +43,7 @@
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col text-center align-items-left>
+    <ion-col col-6 text-center>
         <button ion-button id="squarebutton" (click)="scan()">
           <div>
             <ion-row class=icon>
@@ -53,7 +55,7 @@
         </div>
       </button> 
     </ion-col>
-    <ion-col text-center align-items-right>
+    <ion-col col-6 text-center>
         <button ion-button id="squarebutton" (click)="rewardspage()">
           <div>
             <ion-row class=icon>

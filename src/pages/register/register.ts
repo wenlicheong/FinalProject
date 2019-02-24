@@ -34,4 +34,9 @@ export class RegisterPage {
     }  
   }
 
+  login(){
+    this.navCtrl.push('LoginPage');  //go to register page
+  }
+ 
+
 }
