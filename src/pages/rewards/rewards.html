@@ -11,7 +11,7 @@
   </ion-header>
 
 <ion-content padding>
-
+<!--
   <ion-card id="carddesign" *ngIf= "this.bronze==1" (click)="couponbronzepage()">
     <div text-center> <img id="pic" src="{{bronzeRef.photo}}"/> </div> 
         <ion-card-content>
@@ -24,34 +24,71 @@
         </ion-card-content>
        <button ion-button clear color="main" (click)= "couponbronzepage()">Claim Coupon</button>   
   </ion-card>
+-->
 
-  <ion-card id="carddesign" *ngIf= "this.silver==1" >
-      <div text-center><img id="pic" src="{{silverRef.photo}}"/>  </div>
+<ion-card id="carddesign" *ngIf= "this.bronze==1" (click)="couponbronzepage()">
+  <ion-row>
+    <ion-col col-7>
         <ion-card-content>
-          <ion-card-title>
-               <span>{{silverRef.rewards}}</span>
-          </ion-card-title>
-           <p>
-             {{silverRef.description}}
-          </p>
-        </ion-card-content>
-       <button ion-button clear color="main" (click)=  "couponsilverpage()" >Claim Coupon</button>   
-  </ion-card>
+            <ion-card-title>
+                 <span>{{bronzeRef.rewards}}</span>
+            </ion-card-title>
+             <p div="font">
+               {{bronzeRef.description}}
+            </p>
+          </ion-card-content>
+    </ion-col>
+    <ion-col col-5>
+      <div id="pic">
+        <img src="{{bronzeRef.photo}}"/> 
+      </div>  
+    </ion-col>
+  </ion-row>
+</ion-card>
 
-  <ion-card id="carddesign" *ngIf= "this.gold==1" >
-      <div text-center>
-      <img id="pic" src="{{goldRef.photo}}"/>  </div>
-        <ion-card-content>
-          <ion-card-title>
-               <span>{{goldRef.rewards}}</span>
-          </ion-card-title>
-           <p>
-             {{goldRef.description}}
-          </p>
-        </ion-card-content>
-       <button ion-button clear color="main" (click)=  "coupongoldpage()" >Claim Coupon</button>   
+
+<ion-card id="carddesign" *ngIf= "this.silver==1" (click)="couponsilverpage()">
+    <ion-row>
+      <ion-col col-7>
+          <ion-card-content>
+              <ion-card-title>
+                   <span>{{silverRef.rewards}}</span>
+              </ion-card-title>
+               <p div="font">
+                 {{silverRef.description}}
+              </p>
+            </ion-card-content>
+      </ion-col>
+      <ion-col col-5>
+        <div id="pic">
+          <img src="{{silverRef.photo}}"/> 
+        </div>  
+      </ion-col>
+    </ion-row>
   </ion-card>
- 
+  
+
+  
+<ion-card id="carddesign" *ngIf= "this.gold==1" (click)="coupongoldpage()">
+    <ion-row>
+      <ion-col col-7>
+          <ion-card-content>
+              <ion-card-title>
+                   <span>{{goldRef.rewards}}</span>
+              </ion-card-title>
+               <p div="font">
+                 {{goldRef.description}}
+              </p>
+            </ion-card-content>
+      </ion-col>
+      <ion-col col-5>
+        <div id="pic">
+          <img src="{{goldRef.photo}}"/> 
+        </div>  
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  
 </ion-content>
 
 
