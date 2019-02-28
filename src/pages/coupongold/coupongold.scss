@@ -1,13 +1,33 @@
-page-coupongold {
-    button{
-        border-radius: 15px;
-        margin: auto;
-        display: block;
+
+    ion-app.md [padding] .scroll-content {
+        padding: 20px;
     }
 
-    button:hover{
-        background-color: darken(#488aff,40%);
-    }
+page-coupongold {
+
+    $font-color: #545F67;
+    $font-color2: #69DC9E;
+    $background: #fefefe;
+   
+
+
+    .toolbar-background {
+        background-color: $background;
+      }
+
+    .scroll-content{
+        background-color: $background;
+    } 
+
+  
+    #goldbutton{
+        background-image: linear-gradient(to bottom, #69dc9e, #67d99c, #65d699, #63d397, #61d095);
+        -webkit-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+        -moz-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+        box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+     }
+    
+
 
     #content{
 
