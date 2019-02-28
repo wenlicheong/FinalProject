@@ -1,5 +1,15 @@
 page-login {
 
+
+    #earth {
+        max-height: 200px;
+        margin-top: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+       
+    }
+
     #welcometext{
         text-align: center;
         padding-top: 100px;
@@ -21,6 +31,11 @@ page-login {
 
     .buttonpadding{
         padding-top:30px;
+        border-radius: 10px;
+
+        button{
+            background-color: #61D095;
+        }
     }
 
 

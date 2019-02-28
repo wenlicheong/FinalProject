@@ -1,7 +1,62 @@
 page-profile {
 
-    .avatar{
-        margin:auto;
+   #topcontainer {
+    height: 170px;
+    background-color: lightgrey;
+    
+        #profile{
+            text-align: center;
+            font-size: 20px;
+            padding-top:120px;
+        }
+        
     }
 
+   #bottomcontainer{
+        text-align: center;
+    #card{
+        border-radius: 20px;
+        margin-top: -20px;
+        padding: 10px;
+        background-color: brown;
+        width: 150px;
+        display: inline-block;
+
+        #text{
+            font-size: 15px;
+            text-align: center;
+        }
+        
+    }
+   }
+
+   #carddesign {
+        
+    padding:10px;
+    position: relative;
+    text-align: left;
+    border-radius: 20px;
+
+    #pic{
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        height: 100%;
+        img{
+            border-radius: 20px;
+        }
+    
+    }
+
+    ion-card-title{
+        font-size: 20px;
+    }
+
+    p.font{
+        font-size: 13px;
+        color: map-get($colors, main);
+    }
+
+
+    }   
 }

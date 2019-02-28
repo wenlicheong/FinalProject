@@ -1,22 +1,29 @@
 page-qrcode {
 
     
-    $border-radius: 20px;
-    
+    $border-radius: 10px;
+    $font-color: #545F67;
+    $font-color2: #69DC9E;
+    .color{ color: #545F67; }
 
+    .scroll-content{
+        background-color: #fefefe;
+    }
+    
     .toolbar-background {
-        background-color: #ecfffd ;
+        background-color: #fefefe ;
       }
     
     #greetingfont{
         font-size: 30px;
+        color: $font-color;
+        font-weight: 500;
+        padding-bottom: 5px;
     }
 
     #topcontainer{
-        background-color: #ecfffd ;
-        height: 200px;
-        -webkit-clip-path: circle(80% at 50% 0);
-        clip-path: circle(80% at 50% 0);
+        background-color: #fefefe ;
+        height: 180px;
         padding:40px;
         z-index: -1;
     }
@@ -25,6 +32,14 @@ page-qrcode {
         padding:20px;
         
     }
+
+    
+    .card-md{
+        -webkit-box-shadow: 1px 5px 37px -5px rgba(0,0,0,0.2);
+        -moz-box-shadow: 1px 5px 37px -5px rgba(0,0,0,0.2);
+        box-shadow: 1px 5px 37px -5px rgba(0,0,0,0.2);
+    }
+
     #pointscontainer{
         z-index:1;
         margin-top:-70px;
@@ -33,10 +48,10 @@ page-qrcode {
         padding-bottom:30px;
         #mainpoint{
             font-size: 50px;
-            color: map-get($colors, main);
+            color: $font-color2;
             #secondarypoint{
                 font-size: 40px;
-                color: map-get($colors, main);
+                color: $font-color;
             }
         }
     }
@@ -51,7 +66,7 @@ page-qrcode {
         #moneycardfont{
             padding-top:10px;
             font-size: 30px;
-            color: map-get($colors, main);
+            color: $font-color2;
 
         }
     }
@@ -66,7 +81,7 @@ page-qrcode {
         #environmentcardfont{
             padding-top:10px;
             font-size: 30px;
-            color: map-get($colors, main);
+            color: $font-color2;
         }
     }
 
@@ -74,8 +89,11 @@ page-qrcode {
         min-width: 150px !important;
         min-height: 150px !important;
         border-radius: $border-radius;
-        background-color: #fff;
-        color: #000;
+        color: #fefefe;
+        background-image: linear-gradient(to bottom, #69dc9e, #67d99c, #65d699, #63d397, #61d095);
+        -webkit-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+        -moz-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+        box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
 
         .icon{
             justify-content: center;

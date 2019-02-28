@@ -9,49 +9,82 @@ Ionic pages and navigation.
 -->
 
 <ion-header>
+</ion-header>
 
-  <ion-navbar>
-  
-  <ion-title>profile</ion-title>
-  
-  </ion-navbar>
-  
-  </ion-header>
-  
-  <ion-content padding>
-  
-  <ion-avatar class="avatar">
-  
-  <img src="../assets/imgs/avatar.png" >
-  
-  </ion-avatar>
-  
-  <ion-list>
-  
-  <ion-item>
-  
-  <ion-label stacked>Username</ion-label>
-  
-  <ion-input type="text" [readonly]="isReadonly()" value="{{(profileData|async)?.username}}"></ion-input>
-  
-  </ion-item>
-  
-  <ion-item>
-  
-  <ion-label stacked>First name</ion-label>
-  
-  <ion-input type="text" [readonly]="isReadonly()" value="{{(profileData|async)?.firstname}}"></ion-input>
-  
-  </ion-item>
-  
-  <ion-item>
-  
-  <ion-label stacked>First name</ion-label>
-  
-  <ion-input type="text" [readonly]="isReadonly()" value="{{(profileData|async)?.lastname}}"></ion-input>
-  
-  </ion-item>
-  
-  </ion-list>
-  
-  </ion-content>
+<ion-content>
+  <div id="topcontainer"> 
+    <div id="profile">{{(profileData|async)?.firstname}} {{(profileData|async)?.lastname}}</div>
+  </div> 
+ 
+  <div id="bottomcontainer">
+      <span id="card">
+        <div id="text">Past Vouchers</div>
+      </span>
+
+    <ion-card id="carddesign" *ngIf= "this.bronze==1">
+        <ion-row>
+          <ion-col col-7>
+              <ion-card-content>
+                  <ion-card-title>
+                       <span>{{bronzeRef.rewards}}</span>
+                  </ion-card-title>
+                   <p class="font">
+                     {{bronzeRef.description}}
+                  </p>
+                </ion-card-content>
+          </ion-col>
+          <ion-col col-5>
+            <div id="pic">
+              <img src="{{bronzeRef.photo}}"/> 
+            </div>  
+          </ion-col>
+        </ion-row>
+      </ion-card>
+      <ion-card id="carddesign" *ngIf= "this.silver==1">
+          <ion-row>
+            <ion-col col-7>
+                <ion-card-content>
+                    <ion-card-title>
+                         <span>{{silverRef.rewards}}</span>
+                    </ion-card-title>
+                     <p class="font">
+                       {{silverRef.description}}
+                    </p>
+                  </ion-card-content>
+            </ion-col>
+            <ion-col col-5>
+              <div id="pic">
+                <img src="{{silverRef.photo}}"/> 
+              </div>  
+            </ion-col>
+          </ion-row>
+        </ion-card>
+        
+      
+        
+      <ion-card id="carddesign" *ngIf= "this.gold==1">
+          <ion-row>
+            <ion-col col-7>
+                <ion-card-content>
+                    <ion-card-title>
+                         <span>{{goldRef.rewards}}</span>
+                    </ion-card-title>
+                     <p class="font">
+                       {{goldRef.description}}
+                    </p>
+                  </ion-card-content>
+            </ion-col>
+            <ion-col col-5>
+              <div id="pic">
+                <img src="{{goldRef.photo}}"/> 
+              </div>  
+            </ion-col>
+          </ion-row>
+        </ion-card>
+        
+      
+  </div> 
+
+ 
+
+</ion-content>

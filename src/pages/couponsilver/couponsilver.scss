@@ -1,4 +1,17 @@
 page-couponsilver {
+
+    $font-color: #545F67;
+    $font-color2: #69DC9E;
+    $background: #fefefe;
+
+    .toolbar-background {
+        background-color: $background;
+      }
+
+    .scroll-content{
+        background-color: $background;
+    } 
+
     button{
         border-radius: 15px;
         margin: auto;

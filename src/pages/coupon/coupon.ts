@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-
+import {QrcodePage} from '../qrcode/qrcode';
 /**
  * Generated class for the CouponPage page.
  *
@@ -29,15 +29,15 @@ export class CouponPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CouponPage');
-   
   }
 
    //when user has claimed coupon
    claimbronzecoupon(){
     this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-        this.fdb.object('UserCoupons/' + 'Bronze/' + auth.uid).set(0);
+        this.fdb.object('UserCoupons/' + 'Bronze/' + auth.uid).set(0);        
+        this.fdb.object('ClaimedCoupons/' + 'Bronze/' + auth.uid).set(1);
       });    
+    this.navCtrl.push(QrcodePage);
   }
 
   

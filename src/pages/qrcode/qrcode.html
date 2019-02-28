@@ -1,8 +1,4 @@
-\<!--
-  Generated template for the QrcodePage page.
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
+
 <ion-header no-border>
   <ion-navbar>
     <ion-title></ion-title>
@@ -17,27 +13,27 @@
 <ion-content>
  
 <div id="topcontainer">
-  <div id="greetingfont">Hi {{(profileData|async)?.username}}!</div>
-  <div>What are you gonna dapao today?</div>
+  <div id="greetingfont">Welcome {{(profileData|async)?.username}}! </div>
+  <div class="color">What are you gonna dapao today?</div>
 </div>
 <div id="container">
 <ion-grid>
   <ion-row>
   <ion-card id="pointscontainer"> 
-    <div text-center id="mainpoint">{{(update|async)}}/<a id="secondarypoint">100</a> </div>
-    <p text-center>{{remain|async}} points till next reward</p>
+    <div text-center id="mainpoint">{{(update|async)}}<a id="secondarypoint">/100</a> </div>
+    <p text-center class="color">{{remain|async}} points till next reward</p>
   </ion-card>
   </ion-row>
   <ion-row>
     <ion-col col-6 text-center>
       <ion-card id="moneycard"> 
-        <ion-row justify-content-center>Estimated savings</ion-row>
+        <ion-row justify-content-center class="color">Estimated savings</ion-row>
         <ion-row justify-content-center id="moneycardfont">{{moneySaved()}}</ion-row>
     </ion-card>
     </ion-col>
     <ion-col col-6 text-center>
       <ion-card id="environmentcard"> 
-        <ion-row justify-content-center>Turtles saved</ion-row>
+        <ion-row justify-content-center class="color">Turtles saved</ion-row>
         <ion-row justify-content-center id="environmentcardfont">{{turtlesSaved()}}</ion-row>
     </ion-card>
     </ion-col>

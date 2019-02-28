@@ -1,15 +1,14 @@
 page-information {
 
+    $font-color: #545F67;
+    $font-color2: #69DC9E;
+
     ion-content{
-        background-color: green;
+        background-color: $font-color2;
     }
 
     h1{
         text-align: center;
-    }
-
-    #carddesign {
-        border-radius: 15px;
     }
 
     .hi{
@@ -34,8 +33,16 @@ page-information {
     }
 
     .swiper-pagination-bullet-active {
-        background: color($colors,main);
+        background: $font-color2;
         opacity: 1;
         }
+    
+    .button{
+        background-image: linear-gradient(to bottom, #69dc9e, #67d99c, #65d699, #63d397, #61d095);
+        -webkit-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+        -moz-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+        box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+
+    }
 
 }

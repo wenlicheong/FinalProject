@@ -1,35 +1,65 @@
 page-rewards {
 
+    
+    $border-radius: 10px;
+    $font-color: #545F67;
+    $font-color2: #69DC9E;
+    $background: #fefefe;
+    .color{ color: #545F67; }
+
     .toolbar-background {
-        background-color: #fff ;
+        background-color: $background;
       }
 
+    .scroll-content{
+        background-color: $background;
+        background-image: url('./../assets/imgs/coupon.png');
+        background-repeat: no-repeat;
+        background-size: 100px;
+        background-position: center;
+       
+    }
+    
+    #container{
+        padding:20px;
+    }
+   
     #carddesign {
         
-        padding:10px;
+        padding:0px;
         position: relative;
-        text-align: center;
-        border-radius: 20px;
-        
-        button{
-            margin: auto;
-            display:block;
-        }
+        text-align: left;
+        border-radius: $border-radius;
+        -webkit-box-shadow: 1px 5px 37px -5px rgba(0,0,0,0.2);
+        -moz-box-shadow: 1px 5px 37px -5px rgba(0,0,0,0.2);
+        box-shadow: 1px 5px 37px -5px rgba(0,0,0,0.2);
+        height: 130px;
 
         #pic{
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            height: 100%;
+           width:100%;
+           display:flex;
+           justify-content:center;
+           align-items:center;
+           overflow:hidden
+            
             img{
-                border-radius: 20px;
+                border-radius: 0px;
+                flex-shrink:0;
+                -webkit-flex-shrink: 0;
+                max-width:70%;
+                max-height:90%;
+                
             }
         
         }
 
-        p.font{
+        ion-card-title{
             font-size: 20px;
-            color: map-get($colors, main);
+        }
+
+        p.font{
+            font-size: 13px;
+            color: $font-color;
         }
 
     
