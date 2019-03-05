@@ -1,33 +1,51 @@
 page-profile {
 
+    $font-color: #545F67;
+    $font-color2: #69DC9E;
+    $font-color3: #FEFEFE;
+    $font-color4: #EAEAEA;
+    $font-color5:  #F4D06F;
+
    #topcontainer {
-    height: 170px;
-    background-color: lightgrey;
+    height: 180px;
+    background-image: url('./../assets/imgs/qrcodebg1.jpg'); 
+    background-repeat: no-repeat;
+    text-align: center;
+    
     
         #profile{
             text-align: center;
+            color: $font-color;
             font-size: 20px;
-            padding-top:120px;
+            padding-top:110px;
+            font-weight: 500;
+        }
+
+        #card{
+            border-radius: 20px;
+            margin-top: 25px;
+            padding: 10px;
+            background-color: $font-color5;
+            width: 150px;
+            display: inline-block;
+            color: $font-color3;
+            -webkit-box-shadow: 1px 5px 37px -6px $font-color5;
+            -moz-box-shadow: 1px 5px 37px -6px $font-color5;
+            box-shadow: 1px 5px 37px -6px $font-color5;
+
+
+            #text{
+                font-size: 15px;
+                text-align: center;
+            }
         }
         
     }
 
    #bottomcontainer{
         text-align: center;
-    #card{
-        border-radius: 20px;
-        margin-top: -20px;
-        padding: 10px;
-        background-color: brown;
-        width: 150px;
-        display: inline-block;
-
-        #text{
-            font-size: 15px;
-            text-align: center;
-        }
-        
-    }
+        padding: 20px;
+  
    }
 
    #carddesign {
@@ -36,6 +54,11 @@ page-profile {
     position: relative;
     text-align: left;
     border-radius: 20px;
+    
+        -webkit-box-shadow: 1px 5px 37px -5px rgba(0,0,0,0.2);
+        -moz-box-shadow: 1px 5px 37px -5px rgba(0,0,0,0.2);
+        box-shadow: 1px 5px 37px -5px rgba(0,0,0,0.2);
+    
 
     #pic{
         display: flex !important;
@@ -50,11 +73,12 @@ page-profile {
 
     ion-card-title{
         font-size: 20px;
+        color: $font-color;
     }
 
     p.font{
         font-size: 13px;
-        color: map-get($colors, main);
+        color: #959595;
     }
 
 

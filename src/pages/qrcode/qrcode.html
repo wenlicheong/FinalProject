@@ -1,7 +1,7 @@
 
-<ion-header no-border>
+<ion-header transparent no-border>
   <ion-navbar>
-    <ion-title></ion-title>
+    <ion-title id="title">Welcome</ion-title>
       <ion-buttons end>
         <button ion-button icon-only (click)="navigatetoinformationpage()">
           <ion-icon name="information-circle" ></ion-icon>
@@ -10,12 +10,15 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
  
 <div id="topcontainer">
+<!--  
   <div id="greetingfont">Welcome {{(profileData|async)?.username}}! </div>
   <div class="color">What are you gonna dapao today?</div>
+-->
 </div>
+
 <div id="container">
 <ion-grid>
   <ion-row>

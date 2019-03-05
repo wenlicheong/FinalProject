@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
 import {AngularFireDatabase} from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { CouponPage } from '../coupon/coupon';
@@ -21,7 +21,7 @@ export class RewardsPage {
  silver;
  gold;
 
-  constructor(private fdb: AngularFireDatabase, private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public modalCtrl: ModalController,private fdb: AngularFireDatabase, private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
     //getting voucher details from database
     this.fdb.object('Bronze/').valueChanges().subscribe(_data=>{
       this.bronzeRef=_data; 
@@ -76,7 +76,8 @@ export class RewardsPage {
   }
 
   coupongoldpage(){
-    this.navCtrl.push(CoupongoldPage);
+    this.modalCtrl.create(CoupongoldPage).present();
+    //this.navCtrl.push(CoupongoldPage);
   }
 
 /*

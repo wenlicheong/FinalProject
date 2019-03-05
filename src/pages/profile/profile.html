@@ -13,13 +13,14 @@ Ionic pages and navigation.
 
 <ion-content>
   <div id="topcontainer"> 
-    <div id="profile">{{(profileData|async)?.firstname}} {{(profileData|async)?.lastname}}</div>
+    <div id="profile">Wen Li Cheong {{(profileData|async)?.firstname}} {{(profileData|async)?.lastname}}</div>
+    <span id="card">
+      <div id="text">Past Vouchers</div>
+    </span>
   </div> 
  
   <div id="bottomcontainer">
-      <span id="card">
-        <div id="text">Past Vouchers</div>
-      </span>
+     
 
     <ion-card id="carddesign" *ngIf= "this.bronze==1">
         <ion-row>

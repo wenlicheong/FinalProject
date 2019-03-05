@@ -1,37 +1,65 @@
 
-    ion-app.md [padding] .scroll-content {
-        padding: 20px;
-    }
 
 page-coupongold {
 
     $font-color: #545F67;
     $font-color2: #69DC9E;
-    $background: #fefefe;
+    $font-color3: #FEFEFE;
+    $font-color4: #EAEAEA;
+   
    
 
+    ion-header[transparent] .toolbar-background { 
+        background: transparent;
+        
+    }
 
-    .toolbar-background {
-        background-color: $background;
-      }
+    .toolbar-title-md {
+        color: $font-color3;
+    }
+    
+    .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+        color: $font-color3;
+    }
 
     .scroll-content{
-        background-color: $background;
+        background-color: $font-color3;
+        padding-top: 0 !important;
     } 
 
-  
-    #goldbutton{
-        background-image: linear-gradient(to bottom, #69dc9e, #67d99c, #65d699, #63d397, #61d095);
-        -webkit-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
-        -moz-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
-        box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
-     }
+   
+    
+    #container{
+        padding:30px;
+
+        small{
+            color: $font-color;
+        }
+
+        #title{
+            font-size: 22px;
+            font-weight: 600;
+            color: $font-color;
+        }
+
+        #content{
+            color: $font-color;
+        }
+    }
+
+        #goldbutton{
+            margin-top: 20px;
+            margin-bottom: 40px;
+            float: right;
+            padding:20px;
+            border-radius: 20px;
+            background-image: linear-gradient(to bottom, #69dc9e, #67d99c, #65d699, #63d397, #61d095);
+            -webkit-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+            -moz-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+            box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+        }
+    
     
 
-
-    #content{
-
-        text-align: center;
-
-    }
+   
 }

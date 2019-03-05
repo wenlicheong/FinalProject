@@ -4,33 +4,41 @@ page-qrcode {
     $border-radius: 10px;
     $font-color: #545F67;
     $font-color2: #69DC9E;
+    $font-color3: #FEFEFE;
+    $font-color4: #EAEAEA;
+    $font-color5: #E3F8ED;
     .color{ color: #545F67; }
 
-    .scroll-content{
-        background-color: #fefefe;
-    }
-    
-    .toolbar-background {
-        background-color: #fefefe ;
-      }
-    
-    #greetingfont{
-        font-size: 30px;
-        color: $font-color;
-        font-weight: 500;
-        padding-bottom: 5px;
+    ion-header[transparent] .toolbar-background { 
+        background: transparent;
+        
     }
 
+    .scroll-content{
+        background-color: #fefefe; 
+        background-image: url('./../assets/imgs/qrcodebg1.jpg'); 
+        background-repeat: no-repeat;
+        
+    }
+    
+
+    .toolbar-title-md {
+        margin-left:25px;
+        text-align: center;
+        font-weight: 500;
+        color: $font-color3;
+    }
+   
+
     #topcontainer{
-        background-color: #fefefe ;
-        height: 180px;
-        padding:40px;
+        height: 220px;
         z-index: -1;
     }
 
-    #container{
+
+    #container{ 
         padding:20px;
-        
+        background-color: #b4c9ce;
     }
 
     
@@ -41,17 +49,20 @@ page-qrcode {
     }
 
     #pointscontainer{
-        z-index:1;
-        margin-top:-70px;
+        margin-top: -100px;
         border-radius:$border-radius;
         padding-top:30px;
         padding-bottom:30px;
+        background-color: rgba(#fff, 0.95);
+
         #mainpoint{
             font-size: 50px;
             color: $font-color2;
+           
             #secondarypoint{
                 font-size: 40px;
                 color: $font-color;
+                
             }
         }
     }
