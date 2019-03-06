@@ -3,10 +3,10 @@ page-qrcode {
     
     $border-radius: 10px;
     $font-color: #545F67;
-    $font-color2: #69DC9E;
+    $font-color2: #28b574;
+    //$font-color2: #e7bb41;
     $font-color3: #FEFEFE;
     $font-color4: #EAEAEA;
-    $font-color5: #E3F8ED;
     .color{ color: #545F67; }
 
     ion-header[transparent] .toolbar-background { 
@@ -15,9 +15,10 @@ page-qrcode {
     }
 
     .scroll-content{
-        background-color: #fefefe; 
-        background-image: url('./../assets/imgs/qrcodebg1.jpg'); 
+        background-color: $font-color3; 
+        background: url('./../assets/imgs/qrcodebg2.jpg'); 
         background-repeat: no-repeat;
+        background-size: 100%;
         
     }
     
@@ -31,14 +32,14 @@ page-qrcode {
    
 
     #topcontainer{
-        height: 220px;
+        height: 240px;
         z-index: -1;
     }
 
 
     #container{ 
         padding:20px;
-        background-color: #b4c9ce;
+        background-color: $font-color3;
     }
 
     
@@ -100,11 +101,11 @@ page-qrcode {
         min-width: 150px !important;
         min-height: 150px !important;
         border-radius: $border-radius;
-        color: #fefefe;
-        background-image: linear-gradient(to bottom, #69dc9e, #67d99c, #65d699, #63d397, #61d095);
-        -webkit-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
-        -moz-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
-        box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+        color: $font-color3;
+        background-image: linear-gradient(to bottom, #62c999, #55c490, #48bf87, #39ba7d, #28b574);
+        -webkit-box-shadow: 1px 5px 37px -1px rgba($font-color2,1);
+        -moz-box-shadow: 1px 5px 37px -1px rgba($font-color2,1);
+        box-shadow: 1px 5px 37px -1px rgba($font-color2,1);
 
         .icon{
             justify-content: center;

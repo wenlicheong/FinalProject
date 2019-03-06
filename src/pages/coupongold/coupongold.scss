@@ -3,7 +3,7 @@
 page-coupongold {
 
     $font-color: #545F67;
-    $font-color2: #69DC9E;
+    $font-color2: #28b574;
     $font-color3: #FEFEFE;
     $font-color4: #EAEAEA;
    
@@ -53,10 +53,11 @@ page-coupongold {
             float: right;
             padding:20px;
             border-radius: 20px;
-            background-image: linear-gradient(to bottom, #69dc9e, #67d99c, #65d699, #63d397, #61d095);
-            -webkit-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
-            -moz-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
-            box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+            background-image: linear-gradient(to bottom, #62c999, #55c490, #48bf87, #39ba7d, #28b574);
+            -webkit-box-shadow: 1px 5px 37px -1px rgba($font-color2,1);
+        -moz-box-shadow: 1px 5px 37px -1px rgba($font-color2,1);
+        box-shadow: 1px 5px 37px -1px rgba($font-color2,1);
+
         }
     
     

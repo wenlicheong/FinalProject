@@ -9,7 +9,10 @@ Ionic pages and navigation.
 -->
 
 <ion-header>
-</ion-header>
+    <ion-navbar>
+     <ion-title id="title">Wen Li Cheong {{(profileData|async)?.firstname}} {{(profileData|async)?.lastname}}</ion-title>
+    </ion-navbar>
+  </ion-header>
 
 <ion-content>
   <div id="topcontainer"> 
