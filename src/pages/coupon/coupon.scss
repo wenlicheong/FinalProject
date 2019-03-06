@@ -1,18 +1,62 @@
 page-coupon {
 
-    button{
-        border-radius: 15px;
-        margin: auto;
-        display: block;
+    $font-color: #545F67;
+    $font-color2: #28b574;
+    $font-color3: #FEFEFE;
+    $font-color4: #EAEAEA;
+   
+   
+
+    ion-header[transparent] .toolbar-background { 
+        background: transparent;
+        
     }
 
-    button:hover{
-        background-color: darken(#488aff,40%);
+    .toolbar-title-md {
+        color: $font-color3;
+    }
+    
+    .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+        color: $font-color3;
     }
 
-    #content{
+    .scroll-content{
+        background-color: $font-color3;
+        padding-top: 0 !important;
+    } 
 
-        text-align: center;
+   
+    
+    #container{
+        padding:30px;
 
+        small{
+            color: $font-color;
+        }
+
+        #title{
+            font-size: 22px;
+            font-weight: 600;
+            color: $font-color;
+        }
+
+        #content{
+            color: $font-color;
+        }
     }
+
+        #goldbutton{
+            margin-top: 20px;
+            margin-bottom: 40px;
+            float: right;
+            padding:20px;
+            border-radius: 20px;
+            background-image: linear-gradient(to bottom, #62c999, #55c490, #48bf87, #39ba7d, #28b574);
+            -webkit-box-shadow: 1px 5px 37px -1px rgba($font-color2,1);
+        -moz-box-shadow: 1px 5px 37px -1px rgba($font-color2,1);
+        box-shadow: 1px 5px 37px -1px rgba($font-color2,1);
+
+        }
+    
+    
 }

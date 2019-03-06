@@ -1,7 +1,9 @@
 page-information {
 
     $font-color: #545F67;
-    $font-color2: #69DC9E;
+    $font-color2: #28b574;
+    $font-color3: #FEFEFE;
+    $font-color4: #e26c48;
 
     ion-content{
         background-color: $font-color2;
@@ -9,6 +11,11 @@ page-information {
 
     h1{
         text-align: center;
+        color: $font-color;
+    }
+
+    p{
+        color: $font-color;
     }
 
     .hi{
@@ -26,6 +33,7 @@ page-information {
 
     .card-md p{
         text-align: center;
+        
     }
 
     .card-md{
@@ -38,10 +46,14 @@ page-information {
         }
     
     .button{
-        background-image: linear-gradient(to bottom, #69dc9e, #67d99c, #65d699, #63d397, #61d095);
-        -webkit-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
-        -moz-box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
-        box-shadow: 1px 5px 37px -1px rgba(105,220,158,1);
+        margin-top: 30px;
+        padding-left: 130px;
+        padding-right: 130px;
+        border-radius: 20px;
+        background-image: linear-gradient(to bottom, #62c999, #55c490, #48bf87, #39ba7d, #28b574);
+        -webkit-box-shadow: 1px 5px 33px -3px rgba($font-color2,1);
+        -moz-box-shadow: 1px 5px 33px -3px rgba($font-color2,1);
+        box-shadow: 1px 5px 33px -3px rgba($font-color2,1);
 
     }
 

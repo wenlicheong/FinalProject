@@ -9,22 +9,18 @@ Ionic pages and navigation.
 -->
 
 <ion-header>
-    <ion-navbar>
-     <ion-title id="title">Wen Li Cheong {{(profileData|async)?.firstname}} {{(profileData|async)?.lastname}}</ion-title>
-    </ion-navbar>
   </ion-header>
 
 <ion-content>
   <div id="topcontainer"> 
-    <div id="profile">Wen Li Cheong {{(profileData|async)?.firstname}} {{(profileData|async)?.lastname}}</div>
-    <span id="card">
+      <img src = "assets/imgs/profilebg.jpg"/>
+     <div id="profile">Wen Li Cheong {{(profileData|async)?.firstname}} {{(profileData|async)?.lastname}}</div>
+     <span id="card">
       <div id="text">Past Vouchers</div>
-    </span>
+     </span>
   </div> 
  
   <div id="bottomcontainer">
-     
-
     <ion-card id="carddesign" *ngIf= "this.bronze==1">
         <ion-row>
           <ion-col col-7>

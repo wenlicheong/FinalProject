@@ -3,37 +3,40 @@ page-profile {
     $font-color: #545F67;
     $font-color2: #28b574;
     $font-color3: #FEFEFE;
-    $font-color4: #EAEAEA;
-    $font-color5:  #F4D06F;
+    $font-color4: #e26c48;
 
    #topcontainer {
-    height: 370px;
-    background-image: url('./../assets/imgs/profilebg.jpg'); 
-    background-repeat: no-repeat;
+    
+    position: relative;
     text-align: center;
-    background-size: 100%;
-    margin: -50px;
-    
-    
+    height: 250px;
+
+    img{
+        width:250px;
+    }
         #profile{
-            text-align: center;
-            color: $font-color;
+            position: relative;
+            bottom: 100px;
+            right: 0px;
+            color: $font-color2;
             font-size: 20px;
-            padding-top:170px;
             font-weight: 500;
+            background-color: #fff;
         }
 
         #card{
+            position: relative;
+            bottom: 60px;
+            right: 0px;
             border-radius: 20px;
-            margin-top: 35px;
             padding: 10px;
-            background-color: $font-color5;
+            background-color: $font-color4;
             width: 150px;
             display: inline-block;
             color: $font-color3;
-            -webkit-box-shadow: 1px 5px 37px -6px $font-color5;
-            -moz-box-shadow: 1px 5px 37px -6px $font-color5;
-            box-shadow: 1px 5px 37px -6px $font-color5;
+            -webkit-box-shadow: 1px 5px 37px -6px $font-color4;
+            -moz-box-shadow: 1px 5px 37px -6px $font-color4;
+            box-shadow: 1px 5px 37px -6px $font-color4;
 
 
             #text{
@@ -45,9 +48,9 @@ page-profile {
     }
 
    #bottomcontainer{
+
         text-align: center;
         padding: 20px;
-  
    }
 
    #carddesign {

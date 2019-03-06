@@ -1,24 +1,33 @@
 
-<ion-content padding>
+<ion-content>
 
-  <img id="earth" src="../assets/imgs/earth.jpg">
-  <div id="welcometext">Welcome</div>
-  <div id="catchline">Scan and Earn Points</div>
+  <div id="imgcontainer">
+    <img src="../assets/imgs/loginbg.jpg">
 
-  <ion-item class="padding">
-    <ion-label floating>Email Address</ion-label>
-    <ion-input type="text"[(ngModel)]="user.email"></ion-input>
-  </ion-item>
+    <div id="cardcontainer">
+      <ion-card id="card"> 
+      
+        <div id="welcometext">Welcome</div>
+        <div id="catchline">Scan and Earn Points</div>
 
-  <ion-item class="innerpadding">
-    <ion-label floating>Password</ion-label>
-    <ion-input type="password"[(ngModel)]="user.password"></ion-input>
-  </ion-item>
+        <ion-item class="padding">
+          <ion-label floating>Email Address</ion-label>
+          <ion-input type="text"[(ngModel)]="user.email"></ion-input>
+        </ion-item>
 
-  <div class="buttonpadding">
-  <button ion-button block (click)="login(user)">Login</button>
-  </div>
-  <div style="text-align: center"> Don't have an account?
-    <button ion-button clear (click)="register()">Join Us</button>
+        <ion-item class="innerpadding">
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password"[(ngModel)]="user.password"></ion-input>
+        </ion-item>
+
+        <div class="buttonpadding">
+        <button ion-button block (click)="login(user)">Login</button>
+        </div>
+        <div class="clearbutton"> Don't have an account?
+          <button ion-button clear (click)="register()">Join Us</button>
+        </div>
+
+      </ion-card>
+    </div>
   </div>
 </ion-content>

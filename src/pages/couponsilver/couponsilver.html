@@ -1,27 +1,35 @@
-<!--
-  Generated template for the CouponsilverPage page.
+<ion-header transparent no-border>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header no-border>
-
-  <ion-navbar>
-    <ion-title>{{silverRef.rewards}}</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-  <img id="pic" src="{{silverRef.photo}}"/> 
-  <span>{{silverRef.rewards}}</span>
-  <p><small>(U.P. $6.90)</small></p>
-  <div id="content">
-  <p>{{silverRef.description}}</p>
-  <p>Things to note:</p>
-  <p>1. One-time use only</p>
-  <p>2. Non-transferable</p>
- </div>
-  <button ion-button (click)=  "claimsilvercoupon()" >Claim Coupon</button>   
-</ion-content>
+    <ion-navbar>
+        <ion-buttons left>
+            <button navPop ion-button icon-only>
+              <ion-icon color="light" name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+      <ion-title>{{silverRef.rewards}}</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content fullscreen>
+    <img id="pic" src="{{silverRef.photo}}"/> 
+  
+    <div id="container">
+      <span id="title">{{silverRef.rewards}}</span>
+      <p><small>(U.P. $6.90)</small></p>
+      <div id="content">
+        <p>{{silverRef.description}} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p><strong> Things to note: </strong></p>
+        
+        <p>&nbsp; 1. One-time use only</p>
+        <p>&nbsp; 2. Non-transferable </p>
+      </div>
+      
+      <button block id="silverbutton" ion-button (click)=  "claimsilvercoupon()" >Claim Coupon</button> 
+      
+  </div>
+    
+  </ion-content>
+  
+  
