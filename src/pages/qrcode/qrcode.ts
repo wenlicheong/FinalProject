@@ -30,7 +30,8 @@ export class QrcodePage {
   }
   totalPoints ={} as TotalPoints;
   coupons = {} as UserCoupons;
-  points:any={} as Point;
+  point:any={} as Point;
+  pointing : Observable<any>;
   update: Observable<any>;
   remaining:any={} as Remaining;
   remain: Observable<any>;
@@ -41,7 +42,8 @@ export class QrcodePage {
   this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
    
     this.profileData=this.fdb.object('profile/'+ auth.uid).valueChanges();  //getting profile data for name customisation
-    this.update=this.fdb.object('Point/' + auth.uid).valueChanges(); //geting points from database
+    this.update=this.fdb.object('TotalPoints/' + auth.uid).valueChanges(); //geting points from database
+    this.pointing=this.fdb.object('Point/' + auth.uid).valueChanges();
     this.remain=this.fdb.object('Remaining/' + auth.uid).valueChanges();
     this.ref= this.fdb.list('transactions/'+ auth.uid, ref=>ref.orderByChild(auth.uid)); 
       this.ref.valueChanges().subscribe(result=>{
@@ -52,7 +54,7 @@ export class QrcodePage {
               this.totalData += parseInt(this.arrData[index].points,10);  
             }
       this.insertPoints(this.totalData);
-      this.updatePoints(this.totalData);     //updates points below 100
+      this.updatePoints(this.pointing);     //updates points below 100
      });   
   })
   this.userCoupons(); 
@@ -60,10 +62,10 @@ export class QrcodePage {
 
   updatePoints(data){
     if (data>=100){
-      this.points=data-100;
-      this.remaining = 100 - this.points;
+      this.point=data-100;
+      this.remaining = 100 - this.point;
       this.afAuth.authState.take(1).subscribe(auth=>{
-      this.fdb.object('Point/'+ auth.uid).set(this.points);
+      this.fdb.object('Point/'+ auth.uid).set(this.point);
       this.fdb.object('Remaining/'+ auth.uid).set(this.remaining);
     })
     }

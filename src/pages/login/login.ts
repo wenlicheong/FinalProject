@@ -32,8 +32,10 @@ export class LoginPage {
             }).present();
             this.navCtrl.setRoot('MainPage');
           }
+          
         });
      }
+    
     }
    catch(e){
      console.error(e);

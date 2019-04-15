@@ -26,8 +26,10 @@ export class NewprofilePage {
 
   createProfile(){
     this.afAuth.authState.take(1).subscribe(auth=>{
-      this.fdb.database.ref('/profile').child(auth.uid).set(this.profile)
-        .then(()=>this.navCtrl.setRoot(LoginPage));
+      this.fdb.database
+      .ref('/profile')
+      .child(auth.uid).set(this.profile)
+      .then(()=>this.navCtrl.setRoot(LoginPage));
     })
   }
 
