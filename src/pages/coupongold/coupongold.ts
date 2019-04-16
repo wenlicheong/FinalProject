@@ -36,7 +36,8 @@ export class CoupongoldPage {
         this.fdb.object('UserCoupons/' + 'Gold/' + auth.uid).set(0);
         this.fdb.object('ClaimedCoupons/' + 'Gold/' + auth.uid).set(1);
       });  
-      this.navCtrl.push(QrcodePage);  
+      //this.navCtrl.push(QrcodePage);
+      this.navCtrl.parent.parent.popToRoot(QrcodePage);  
   }
 
 }

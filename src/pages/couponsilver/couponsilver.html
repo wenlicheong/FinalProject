@@ -3,7 +3,6 @@
     <ion-navbar>
         <ion-buttons left>
             <button navPop ion-button icon-only>
-              <ion-icon color="light" name="arrow-back"></ion-icon>
             </button>
         </ion-buttons>
       <ion-title>{{silverRef.rewards}}</ion-title>
@@ -26,7 +25,7 @@
         <p>&nbsp; 2. Non-transferable </p>
       </div>
       
-      <button block id="silverbutton" ion-button (click)=  "claimsilvercoupon()" >Claim Coupon</button> 
+      <button block id="silverbutton" ion-button (click)="presentAlert()" >Claim Coupon</button> 
       
   </div>
     

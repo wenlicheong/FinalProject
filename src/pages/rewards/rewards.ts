@@ -76,25 +76,7 @@ export class RewardsPage {
   }
 
   coupongoldpage(){
-    this.modalCtrl.create(CoupongoldPage).present();
-    //this.navCtrl.push(CoupongoldPage);
+    this.navCtrl.push(CoupongoldPage);
   }
-
-/*
-  displaycoupon(){
-    this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
-      this.fdb.object('TotalPoints/'+ auth.uid).valueChanges().subscribe(data=>{
-        this.value=data;
-        
-    if (this.value >=100 ){
-      this.fdb.object('Bronze/').valueChanges().subscribe(_data=>{
-        this.bronzeRef=_data; 
-      })
-    }
-
-      });      
-    })
-  }
-*/
 
 }

@@ -23,7 +23,7 @@
 <ion-grid>
   <ion-row>
   <ion-card id="pointscontainer"> 
-    <div text-center id="mainpoint">{{(pointing|async)}}<a id="secondarypoint">/100</a> </div>
+    <div text-center id="mainpoint">{{(update|async)}}<a id="secondarypoint">/100</a> </div>
     <p text-center class="color">{{remain|async}} points till next reward</p>
   </ion-card>
   </ion-row>
@@ -68,28 +68,5 @@
     </ion-col>
   </ion-row>
 </ion-grid>
-</div>
-<!--
-  <ion-card id=loadingcirclecard>
-  <canvas #valueBarsCanvas ></canvas>
-  </ion-card>
--->  
- <!-- 
-<pogress-bar [pogress]="tosilver()"></pogress-bar>
- -->
- <!--
-  <p>Popular Rewards</p>   
-  <ion-slides slidesPerView="2.5" spaceBetween="5">
-      <ion-slide *ngFor="let coupons of availcoupons">
-        <ion-card id="slidercard"> 
-          <div> <img id="pic" src="{{coupons.photo}}"/>  </div>
-          <div>{{coupons.rewards}}</div>
-          <div>{{coupons.description}}</div>
-        </ion-card>
-      </ion-slide>
-  </ion-slides>
-  -->
-   <!-- <circle-bar [value]="50"></circle-bar> -->
-
-   
+</div>   
 </ion-content>
