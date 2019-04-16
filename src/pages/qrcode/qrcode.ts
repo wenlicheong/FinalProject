@@ -105,7 +105,8 @@ export class QrcodePage {
     });
 
     this.options={
-      prompt:'Scan your barcode'
+      prompt:'Scan your barcode',
+      resultDisplayDuration: 0
     }; 
 
     this.scanner.scan(this.options).then((data) => {
@@ -152,6 +153,7 @@ export class QrcodePage {
         this.value=data;
         if (this.value==300) {
           this.fdb.object('UserCoupons/' + 'Gold/' + auth.uid).set(1);
+
         }
         else if (this.value==200){
           this.fdb.object('UserCoupons/' + 'Silver/' + auth.uid).set(1);
