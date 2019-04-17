@@ -57,14 +57,21 @@ export class QrcodePage {
   }
 
   updatePoints(data){
-    if (data>=300){
-      this.point=data-300;
+    if (data>=400){
+      this.point=data-400;
       this.remaining = 100 - this.point;
       this.afAuth.authState.take(1).subscribe(auth=>{
       this.fdb.object('TotalPoints/'+ auth.uid).set(this.point);
       this.fdb.object('Remaining/'+ auth.uid).set(this.remaining);
       })
-    } else if (data>=200){
+    } else if (data>=300){
+      this.point=data-300;
+      this.remaining = 100 - this.point;
+      this.afAuth.authState.take(1).subscribe(auth=>{
+      this.fdb.object('TotalPoints/'+ auth.uid).set(this.point);
+      this.fdb.object('Remaining/'+ auth.uid).set(this.remaining); 
+      })
+    }else if (data>=200){
       this.point=data-200;
       this.remaining = 100 - this.point;
       this.afAuth.authState.take(1).subscribe(auth=>{
@@ -151,9 +158,11 @@ export class QrcodePage {
     this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
       this.fdb.object('Point/'+ auth.uid).valueChanges().subscribe(data=>{
         this.value=data;
-        if (this.value==300) {
+        if (this.value==400) {
+          this.fdb.object('UserCoupons/' + 'Platinum/' + auth.uid).set(1);
+        }
+        else if (this.value==300){
           this.fdb.object('UserCoupons/' + 'Gold/' + auth.uid).set(1);
-
         }
         else if (this.value==200){
           this.fdb.object('UserCoupons/' + 'Silver/' + auth.uid).set(1);

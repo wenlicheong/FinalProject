@@ -18,9 +18,11 @@ export class ProfilePage {
     bronzeRef: any={};
     silverRef: any={};
     goldRef: any={};
+    platinumRef: any={};
     bronze;
     silver;
     gold;
+    platinum;
    
 profileData: Observable<any>;
 constructor(public app: App, public oauthService: OAuthService, private fdb: AngularFireDatabase, private afAuth:AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
@@ -34,9 +36,13 @@ constructor(public app: App, public oauthService: OAuthService, private fdb: Ang
       this.fdb.object('Gold/').valueChanges().subscribe(_data=>{
         this.goldRef=_data; 
       })
+      this.fdb.object('Platinum/').valueChanges().subscribe(_data=>{
+        this.platinumRef=_data; 
+      })
       this.getBronzeClaimCoupon();
       this.getSilverClaimCoupon();
       this.getGoldClaimCoupon();
+      this.getPlatinumClaimCoupon();
 }
 
 ionViewDidLoad() {
@@ -68,6 +74,14 @@ getGoldClaimCoupon(){
   this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
     this.fdb.object('ClaimedCoupons/'+ 'Gold/' + auth.uid).valueChanges().subscribe(data=>{
       this.gold=data
+    });      
+  })
+}
+
+getPlatinumClaimCoupon(){
+  this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+    this.fdb.object('ClaimedCoupons/'+ 'Platinum/' + auth.uid).valueChanges().subscribe(data=>{
+      this.platinum=data
     });      
   })
 }

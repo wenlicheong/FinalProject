@@ -19,6 +19,7 @@ import { CouponPage } from '../pages/coupon/coupon';
 import { CouponsilverPage } from '../pages/couponsilver/couponsilver';
 import { CoupongoldPage } from '../pages/coupongold/coupongold';
 import { InformationPage } from '../pages/information/information';
+import { CouponplatinumPage } from '../pages/couponplatinum/couponplatinum';
  
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { InformationPage } from '../pages/information/information';
     CouponPage,
     CouponsilverPage,
     CoupongoldPage,
+    CouponplatinumPage,
     InformationPage
     
   ],
@@ -47,6 +49,7 @@ import { InformationPage } from '../pages/information/information';
     CouponPage,
     CouponsilverPage, 
     CoupongoldPage,
+    CouponplatinumPage,
     InformationPage
   ],
   providers: [

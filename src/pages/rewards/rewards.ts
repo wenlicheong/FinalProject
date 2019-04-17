@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { CouponPage } from '../coupon/coupon';
 import { CouponsilverPage } from '../couponsilver/couponsilver';
 import { CoupongoldPage } from '../coupongold/coupongold';
+import { CouponplatinumPage } from '../couponplatinum/couponplatinum';
 
 @IonicPage()
 @Component({
@@ -16,10 +17,12 @@ export class RewardsPage {
  bronzeRef: any={};
  silverRef: any={};
  goldRef: any={};
+ platinumRef: any={};
  value;
  bronze;
  silver;
  gold;
+ platinum;
 
   constructor(public modalCtrl: ModalController,private fdb: AngularFireDatabase, private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
     //getting voucher details from database
@@ -32,10 +35,14 @@ export class RewardsPage {
     this.fdb.object('Gold/').valueChanges().subscribe(_data=>{
       this.goldRef=_data; 
     })
+    this.fdb.object('Platinum/').valueChanges().subscribe(_data=>{
+      this.platinumRef=_data; 
+    })
 
     this.getBronzeCoupon();
     this.getGoldCoupon();
     this.getSilverCoupon();
+    this.getPlatinumCoupon();
   }
 
   ionViewDidLoad(){
@@ -67,6 +74,14 @@ export class RewardsPage {
     })
   }
 
+  getPlatinumCoupon(){     
+    this.afAuth.authState.take(1).subscribe(auth=>{    //identifying user
+      this.fdb.object('UserCoupons/'+ 'Platinum/' + auth.uid).valueChanges().subscribe(data=>{
+        this.platinum=data
+      });      
+    })
+  }
+
   couponbronzepage(){
     this.navCtrl.push(CouponPage);
   }
@@ -77,6 +92,10 @@ export class RewardsPage {
 
   coupongoldpage(){
     this.navCtrl.push(CoupongoldPage);
+  }
+
+  couponplatinumpage(){
+    this.navCtrl.push(CouponplatinumPage);
   }
 
 }

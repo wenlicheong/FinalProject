@@ -1,0 +1,32 @@
+<ion-header transparent no-border>
+
+  <ion-navbar>
+      <ion-buttons left>
+          <button navPop ion-button icon-only>
+          </button>
+      </ion-buttons>
+    <ion-title>{{platinumRef.rewards}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content fullscreen>
+  <img id="pic" src="{{platinumRef.photo}}"/> 
+
+  <div id="container">
+    <span id="title">{{platinumRef.rewards}}</span>
+    <p><small>(U.P. $6.90)</small></p>
+    <div id="content">
+      <p>{{bronzeRef.description}} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+      <p><strong> Things to note: </strong></p>
+      
+      <p>&nbsp; 1. One-time use only</p>
+      <p>&nbsp; 2. Non-transferable </p>
+    </div>
+    
+    <button block id="bronzebutton" ion-button (click)=  "presentAlert()" >Claim Coupon</button> 
+    
+</div>
+  
+</ion-content>

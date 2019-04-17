@@ -71,6 +71,26 @@
             </ion-col>
           </ion-row>
         </ion-card>
+
+        <ion-card id="carddesign" *ngIf= "this.platinum==1">
+          <ion-row>
+            <ion-col col-7>
+                <ion-card-content>
+                    <ion-card-title>
+                         <span>{{platinumRef.rewards}}</span>
+                    </ion-card-title>
+                     <p class="font">
+                       {{platinumRef.description}}
+                    </p>
+                  </ion-card-content>
+            </ion-col>
+            <ion-col col-5>
+              <div id="pic">
+                <img src="{{platinumRef.photo}}"/> 
+              </div>  
+            </ion-col>
+          </ion-row>
+        </ion-card>
         
       
   </div> 
