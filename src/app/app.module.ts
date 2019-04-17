@@ -10,6 +10,8 @@ import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 /*references of libraries that have to be imported before it is used*/
+import { HttpClientModule } from '@angular/common/http';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 import { MyApp } from './app.component';
 import {FIREBASE_CONFIG} from "./app.firebase.config";
@@ -17,7 +19,6 @@ import { CouponPage } from '../pages/coupon/coupon';
 import { CouponsilverPage } from '../pages/couponsilver/couponsilver';
 import { CoupongoldPage } from '../pages/coupongold/coupongold';
 import { InformationPage } from '../pages/information/information';
-
  
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { InformationPage } from '../pages/information/information';
     CouponsilverPage,
     CoupongoldPage,
     InformationPage
+    
   ],
   imports: [      /*import all the libraries refeerred above*/
     BrowserModule,
@@ -34,7 +36,9 @@ import { InformationPage } from '../pages/information/information';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    HttpClientModule,
+    OAuthModule.forRoot()
 
   ],
   bootstrap: [IonicApp],

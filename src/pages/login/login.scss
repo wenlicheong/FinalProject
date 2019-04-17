@@ -4,9 +4,10 @@ page-login {
     $font-color2: #28b574;
     $font-color3: #FEFEFE;
     $font-color4: #e26c48;
+    $font-color5: #B4C9CE;
 
     .scroll-content{
-        background-color: $font-color4;
+        background-color: $font-color5;
     }
 
     .item-input-has-focus .label-md[stacked],
@@ -33,7 +34,7 @@ page-login {
 
             #card{
                 position: relative;
-                margin-top: -100px;
+                margin-top: -130px;
                 border-radius: 20px;
                 padding:20px;
                 text-align: center;

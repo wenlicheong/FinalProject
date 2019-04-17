@@ -44,6 +44,21 @@ page-profile {
                 text-align: center;
             }
         }
+
+       
+            #signoutbutton{
+                position: relative;
+                bottom: 60px;
+                right: 0px;
+                padding:20px;
+                border-radius: 20px;
+                background-color: transparent;
+                color:#e26c48;
+                  
+                }
+            
+
+       
         
     }
 
@@ -51,7 +66,11 @@ page-profile {
 
         text-align: center;
         padding: 20px;
+        padding-top: 50px;
    }
+
+   
+  
 
    #carddesign {
         

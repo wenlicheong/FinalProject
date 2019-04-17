@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { AngularFireAuth } from "angularfire2/auth";
 import {Observable} from 'rxjs/Observable';
+import { LoginPage } from '../login/login';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @IonicPage()
 @Component({
@@ -21,7 +23,7 @@ export class ProfilePage {
     gold;
    
 profileData: Observable<any>;
-constructor(private fdb: AngularFireDatabase, private afAuth:AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+constructor(public app: App, public oauthService: OAuthService, private fdb: AngularFireDatabase, private afAuth:AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
   //just for getting voucher details 
     this.fdb.object('Bronze/').valueChanges().subscribe(_data=>{
         this.bronzeRef=_data; 
@@ -68,6 +70,11 @@ getGoldClaimCoupon(){
       this.gold=data
     });      
   })
+}
+
+signout(){
+  this.oauthService.logOut(true);
+  this.app.getRootNavs()[0].setRoot(LoginPage);
 }
 
 

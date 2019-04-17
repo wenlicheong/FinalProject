@@ -58,12 +58,13 @@ page-couponsilver {
 
         }
 
-        .alertdesign{
-            border-radius: 10px;   
-        }
-
-        .alertbutton{
+    
+        .alert-md .alert-button {
             color: $font-color2;
+        }
+    
+        .alert-md .alert-wrapper {
+            border-radius: 10px;
         }
                
 }

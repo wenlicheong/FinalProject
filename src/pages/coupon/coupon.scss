@@ -15,6 +15,14 @@ page-coupon {
     .toolbar-title-md {
         color: $font-color3;
     }
+
+    .alert-md .alert-button {
+        color: $font-color2;
+    }
+
+    .alert-md .alert-wrapper {
+        border-radius: 10px;
+    }
     
     .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
         color: $font-color3;

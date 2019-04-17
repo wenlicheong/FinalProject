@@ -4,9 +4,10 @@ page-register {
     $font-color2: #28b574;
     $font-color3: #FEFEFE;
     $font-color4: #e26c48;
+    $font-color5: #BFD8DC;
 
     .scroll-content{
-        background-color: #b4c9ce;
+        background-color: $font-color5;
     }
 
     .item-input-has-focus .label-md[stacked],
@@ -35,7 +36,7 @@ page-register {
 
             #card{
                 position: relative;
-                margin-top: -100px;
+                margin-top: -130px;
                 border-radius: 20px;
                 padding:20px;
                 text-align: center;
