@@ -28,9 +28,8 @@ export class CouponplatinumPage {
 
   async presentAlert() {
     const alert = await this.alertCtrl.create({
-      title: 'Alert',
       message: 'Your coupon has been claimed',
-      buttons: ['OK']
+      buttons: ['Got it!']
       
     });
 

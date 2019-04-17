@@ -29,7 +29,7 @@ export class CouponsilverPage {
       message: 'Your coupon has been claimed',
       cssClass: 'alertdesign',
       buttons: [{
-        text:'OK',
+        text:'Got it!',
         cssClass:'alertbutton'}],
       
     });
